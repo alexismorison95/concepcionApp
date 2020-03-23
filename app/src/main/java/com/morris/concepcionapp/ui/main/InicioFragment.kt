@@ -1,17 +1,33 @@
 package com.morris.concepcionapp.ui.main
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.marginBottom
 
 import com.morris.concepcionapp.R
+import kotlinx.android.synthetic.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private val categorias = arrayOf(
+    "Almacen",
+    "Carniceria",
+    "Gastronomia",
+    "Farmacia",
+    "Ferreteria",
+    "Limpieza",
+    "Panaderia",
+    "Otro"
+)
 
 /**
  * A simple [Fragment] subclass.
@@ -35,8 +51,36 @@ class InicioFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Set theme
+        context?.theme?.applyStyle(R.style.AppThemeInicio, true)
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false)
+        val view = inflater.inflate(R.layout.fragment_inicio, container, false)
+
+        val categoriasLayout = view.findViewById<LinearLayout>(R.id.listaCategoriasLayout)
+
+        // set categorias
+        for (categoria in categorias) {
+
+            val button = Button(view.context)
+            button.text = categoria
+            button.setTextColor(Color.WHITE)
+
+            val param = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                200)
+
+            if (param != null) {
+                param.setMargins(0, 0, 0, 20)
+            }
+            button.layoutParams = param
+
+            categoriasLayout.addView(button)
+
+        }
+
+        // Inflate the layout for this fragment
+        return view
     }
 
     companion object {
