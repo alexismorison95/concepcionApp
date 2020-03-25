@@ -19,93 +19,90 @@ import com.google.android.material.textfield.TextInputEditText
 import com.morris.concepcionapp.R
 import kotlinx.android.synthetic.*
 
-// TODO: En el futuro estas categorias se traen desde un servidor
-private val categorias = arrayOf(
-    "Almacén",
-    "Carnicería",
-    "Farmacia",
-    "Ferretería",
-    "Gastronomía",
-    "Limpieza",
-    "Otro",
-    "Panadería",
-    "Verdulería"
-)
-
 /**
  * A simple [Fragment] subclass.
  * Use the [InicioFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class InicioFragment : Fragment() {
+class InicioFragment : Fragment(), View.OnClickListener {
 
     private var buscarInput: TextInputEditText? = null
+    private var buttonAlmacen: Button? = null
+    private var buttonCarniceria: Button? = null
+    private var buttonFarmacia: Button? = null
+    private var buttonFerreteria: Button? = null
+    private var buttonGastronomia: Button? = null
+    private var buttonLimpieza: Button? = null
+    private var buttonOtro: Button? = null
+    private var buttonPanaderia: Button? = null
+    private var buttonVerduleria: Button? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Set theme
         context?.theme?.applyStyle(R.style.AppThemeInicio, true)
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_inicio, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_inicio, container, false)
 
-        loadCategorias(view)
+        // Inicio las vistas
+        initViews(view)
 
-        buscarInput = view.findViewById<TextInputEditText>(R.id.buscar_input)
+        // Seteo los eventos de click
+        setListeners()
 
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun initViews(view: View) {
+        buscarInput = view.findViewById(R.id.buscar_input)
+        buttonAlmacen = view.findViewById(R.id.button_almacen)
+        buttonCarniceria = view.findViewById(R.id.button_carniceria)
+        buttonFarmacia = view.findViewById(R.id.button_farmacia)
+        buttonFerreteria = view.findViewById(R.id.button_ferreteria)
+        buttonGastronomia = view.findViewById(R.id.button_gastronomia)
+        buttonLimpieza = view.findViewById(R.id.button_limpieza)
+        buttonOtro = view.findViewById(R.id.button_otro)
+        buttonPanaderia = view.findViewById(R.id.button_panaderia)
+        buttonVerduleria = view.findViewById(R.id.button_verduleria)
+    }
 
-        // Para busccar por medio del TextInput
-        buscarInput?.setOnEditorActionListener { textView, action, keyEvent ->
+    private fun setListeners() {
+        buttonAlmacen!!.setOnClickListener(this)
+        buttonCarniceria!!.setOnClickListener(this)
+        buttonFarmacia!!.setOnClickListener(this)
+        buttonFerreteria!!.setOnClickListener(this)
+        buttonGastronomia!!.setOnClickListener(this)
+        buttonLimpieza!!.setOnClickListener(this)
+        buttonOtro!!.setOnClickListener(this)
+        buttonPanaderia!!.setOnClickListener(this)
+        buttonVerduleria!!.setOnClickListener(this)
+
+        buscarInput?.setOnEditorActionListener { _, action, _ ->
             var handled = false
             if (action == EditorInfo.IME_ACTION_SEARCH) {
                 // Aca ejecuto el metodo necesario
-                loadBuscarActivity()
-                println(buscarInput!!.text)
-
+                buscarTextInput()
                 handled = true
             }
             handled
         }
     }
 
-    private fun loadCategorias(view: View) {
-        val categoriasLayout = view.findViewById<LinearLayout>(R.id.listaCategoriasLayout)
+    // Cuando busco por medio de una categoria
+    override fun onClick(v: View?) {
+        var intent = Intent(activity, BuscarActivity::class.java)
 
-        // set categorias
-        for (categoria in categorias) {
+        val button: Button = v!!.findViewById<Button>(v.id)
 
-            val button = Button(view.context)
-            button.text = categoria
-            button.setBackgroundColor(Color.TRANSPARENT)
-            button.setTextColor(Color.rgb(33, 150, 243))
-            //button.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_launcher_background, 0, 0, 0)
+        intent.putExtra("busqueda", button.text.toString())
+        intent.putExtra("tipo", button.text.toString())
 
-            val param = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200)
-
-            param.setMargins(0, 0, 0, 10)
-            button.layoutParams = param
-
-            // Busco por categoria
-            button.setOnClickListener {
-                val intent = Intent(activity, BuscarActivity::class.java)
-
-                intent.putExtra("busqueda", categoria)
-                intent.putExtra("tipo", categoria)
-
-                startActivity(intent)
-            }
-
-            categoriasLayout.addView(button)
-        }
+        startActivity(intent)
     }
 
-    // Se ejecuta cuando usas el buscador
-    private fun loadBuscarActivity() {
-        var busqueda = buscarInput?.text.toString()
+    // Cuando busco por medio del TextEdit
+    private fun buscarTextInput() {
+        var busqueda: String = buscarInput?.text.toString()
 
         // Si escribio algo
         if (!busqueda.isNullOrBlank()) {

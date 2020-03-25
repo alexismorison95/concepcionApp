@@ -3,7 +3,14 @@
     <string name="tab_text_1">Locales</string>
     <string name="tab_text_2">Noticias</string>
     <string name="buscar">Buscar por comida, rubro, etc.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inicio_o_categoria">O elegir una categoría</string>
+    <string name="almacen">almacén</string>
+    <string name="carniceria">Carnicería</string>
+    <string name="farmacia">Farmacia</string>
+    <string name="ferreteria">Ferretería</string>
+    <string name="gastronomia">Gastronomía</string>
+    <string name="limpieza">Limpieza</string>
+    <string name="otro">Otro</string>
+    <string name="panaderia">Panadería</string>
+    <string name="verduleria">Verdulería</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,9 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
+            android:layout_margin="@dimen/padding16dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -30,24 +29,141 @@
                     android:imeOptions="actionSearch"
                     android:singleLine="true"
                     android:inputType="text"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="@dimen/padding16dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="O elegir una categoría"
+                android:text="@string/inicio_o_categoria"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"
-                android:textColor="@color/colorText"/>
+                android:layout_marginBottom="@dimen/padding16dp"
+                android:textColor="@color/colorText" />
 
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="20dp">
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_almacen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_storefront_outline"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/almacen"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_carniceria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_sausage"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/carniceria"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_farmacia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_medical_bag"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/farmacia"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_ferreteria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_hammer_screwdriver"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/ferreteria"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_gastronomia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_pizza"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/gastronomia"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_limpieza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_spray_bottle"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/limpieza"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_otro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_basket"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/otro"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_panaderia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_bread_slice"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/panaderia"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
+                <Button
+                    android:id="@+id/button_verduleria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/colorTransparent"
+                    android:drawableStart="@drawable/ic_food_apple"
+                    android:drawablePadding="@dimen/padding16dp"
+                    android:gravity="start|center"
+                    android:text="@string/verduleria"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen20sp" />
+
             </LinearLayout>
 
         </LinearLayout>

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -45,6 +46,9 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private var direccion: TextView? = null
     private var imagen: ImageView? = null
 
+    // Para el toast
+    val view = inflater.inflate(R.layout.negocio_view, parent, false)
+
     init {
         nombre = itemView.findViewById(R.id.negocio_nombre)
         horario = itemView.findViewById(R.id.negocio_horarios)
@@ -53,15 +57,32 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         descripcion = itemView.findViewById(R.id.negocio_descripcion)
         direccion = itemView.findViewById(R.id.negocio_direccion)
         imagen = itemView.findViewById(R.id.negocio_image)
+
+        // onClickListeners
+        whatsapp?.setOnClickListener {
+            Toast.makeText(view.context, "You clicked on TextView 'WhatsApp'.", Toast.LENGTH_SHORT).show()
+        }
+
+        telefono?.setOnClickListener {
+            Toast.makeText(view.context, "You clicked on TextView 'Telefono'.", Toast.LENGTH_SHORT).show()
+        }
+
+        direccion?.setOnClickListener {
+            Toast.makeText(view.context, "You clicked on TextView 'Direccion'.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun bind(negocio: Negocio) {
         nombre?.text = negocio.nombre
         horario?.text = negocio.horario
-        whatsapp?.text = negocio.whatsapp
         telefono?.text = negocio.telefono
         imagen?.setImageURI(Uri.parse(negocio.imagen))
-        direccion?.text = negocio.direccion
+
+        val nuevoWhatsapp = "<u>" + negocio.whatsapp + "</u>"
+        whatsapp?.text = HtmlCompat.fromHtml(nuevoWhatsapp, HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+        val nuevaDireccion = "<u>" + negocio.direccion + "</u>"
+        direccion?.text = HtmlCompat.fromHtml(nuevaDireccion, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
         val nuevaDescripcion= "<b>Descripción:</b> " + negocio.descripcion
         descripcion?.text = HtmlCompat.fromHtml(nuevaDescripcion, HtmlCompat.FROM_HTML_MODE_LEGACY)
