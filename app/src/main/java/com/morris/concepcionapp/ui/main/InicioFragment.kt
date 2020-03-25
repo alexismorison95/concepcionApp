@@ -21,14 +21,15 @@ import kotlinx.android.synthetic.*
 
 // TODO: En el futuro estas categorias se traen desde un servidor
 private val categorias = arrayOf(
-    "Almacen",
-    "Carniceria",
-    "Gastronomia",
+    "Almacén",
+    "Carnicería",
     "Farmacia",
-    "Ferreteria",
+    "Ferretería",
+    "Gastronomía",
     "Limpieza",
-    "Panaderia",
-    "Otro"
+    "Otro",
+    "Panadería",
+    "Verdulería"
 )
 
 /**
@@ -57,6 +58,7 @@ class InicioFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        // Para busccar por medio del TextInput
         buscarInput?.setOnEditorActionListener { textView, action, keyEvent ->
             var handled = false
             if (action == EditorInfo.IME_ACTION_SEARCH) {
@@ -78,23 +80,44 @@ class InicioFragment : Fragment() {
 
             val button = Button(view.context)
             button.text = categoria
-            button.setTextColor(Color.WHITE)
+            button.setBackgroundColor(Color.TRANSPARENT)
+            button.setTextColor(Color.rgb(33, 150, 243))
+            //button.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_launcher_background, 0, 0, 0)
 
             val param = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200)
 
-            param.setMargins(0, 0, 0, 25)
+            param.setMargins(0, 0, 0, 10)
             button.layoutParams = param
+
+            // Busco por categoria
+            button.setOnClickListener {
+                val intent = Intent(activity, BuscarActivity::class.java)
+
+                intent.putExtra("busqueda", categoria)
+                intent.putExtra("tipo", categoria)
+
+                startActivity(intent)
+            }
 
             categoriasLayout.addView(button)
         }
     }
 
+    // Se ejecuta cuando usas el buscador
     private fun loadBuscarActivity() {
-        val intent = Intent(activity, BuscarActivity::class.java)
-        intent.putExtra("busqueda", buscarInput?.text)
-        intent.putExtra("tipo", "busqueda")
+        var busqueda = buscarInput?.text.toString()
 
-        startActivity(intent)
+        // Si escribio algo
+        if (!busqueda.isNullOrBlank()) {
+
+            val intent = Intent(activity, BuscarActivity::class.java)
+
+            intent.putExtra("busqueda", busqueda)
+            intent.putExtra("tipo", "todo")
+
+            startActivity(intent)
+
+        }
     }
 
     companion object {

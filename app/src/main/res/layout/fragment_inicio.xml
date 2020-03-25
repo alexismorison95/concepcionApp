@@ -34,6 +34,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O elegir una categoría"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/colorText"/>
+
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
                 android:layout_width="match_parent"
@@ -41,8 +49,6 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="20dp">
             </LinearLayout>
-
-
 
         </LinearLayout>
 
