@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.morris.concepcionapp.R
+import com.squareup.picasso.Picasso
 
 class NegocioAdapter(private val list: List<Negocio>): RecyclerView.Adapter<NegocioViewHolder>() {
 
@@ -76,7 +77,11 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         nombre?.text = negocio.nombre
         horario?.text = negocio.horario
         telefono?.text = negocio.telefono
-        imagen?.setImageURI(Uri.parse(negocio.imagen))
+        //imagen?.setImageURI(Uri.parse(negocio.imagen))
+        Picasso.get().load(negocio.imagenURL).
+            placeholder(R.drawable.progress_animation).
+            error(R.drawable.ic_google_downasaur).
+            resize(800, 600).centerCrop().into(imagen)
 
         val nuevoWhatsapp = "<u>" + negocio.whatsapp + "</u>"
         whatsapp?.text = HtmlCompat.fromHtml(nuevoWhatsapp, HtmlCompat.FROM_HTML_MODE_LEGACY)

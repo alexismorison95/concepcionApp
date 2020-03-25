@@ -15,7 +15,6 @@
             android:id="@+id/negocio_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/taberna"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="2dp"/>
 
