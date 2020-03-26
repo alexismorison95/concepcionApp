@@ -51,7 +51,7 @@
 
             <TextView
                 android:id="@+id/negocio_direccion"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tibiletti 478, Concepcion del Uruguay, Entre Rios"
                 android:textColorLink="@color/colorText"
@@ -75,7 +75,7 @@
 
             <TextView
                 android:id="@+id/negocio_whatsapp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+543445402211"
                 android:textColorLink="@color/colorText"
@@ -99,7 +99,7 @@
 
             <TextView
                 android:id="@+id/negocio_telefono"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="03445-15402211"
                 android:autoLink="phone"
