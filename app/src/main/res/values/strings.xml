@@ -2,7 +2,7 @@
     <string name="app_name">Concepción DeliveryApp</string>
     <string name="tab_text_1">Locales</string>
     <string name="tab_text_2">Noticias</string>
-    <string name="buscar">Buscar por comida, rubro, etc.</string>
+    <string name="buscar">Buscar por comida, rubro, local, etc.</string>
     <string name="inicio_o_categoria">O elegir una categoría</string>
     <string name="almacen">almacén</string>
     <string name="carniceria">Carnicería</string>
