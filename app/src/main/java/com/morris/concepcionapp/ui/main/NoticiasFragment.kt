@@ -15,6 +15,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.get
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 import com.morris.concepcionapp.R
 import java.lang.Exception
@@ -34,9 +35,7 @@ class NoticiasFragment : Fragment() {
 
     private lateinit var webView: WebView
     private lateinit var progressBar: ProgressBar
-    private lateinit var btnAtras: Button
-    private lateinit var btnAdelante: Button
-    private lateinit var btnReload: Button
+    private lateinit var btnReload: FloatingActionButton
     private var urlMatutino: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,24 +52,10 @@ class NoticiasFragment : Fragment() {
     private fun loadViews(view: View) {
         webView = view.findViewById(R.id.noticias_webView)
         progressBar = view.findViewById(R.id.progressBar)
-        btnAtras = view.findViewById(R.id.btnAtras)
-        btnAdelante = view.findViewById(R.id.btnAdelante)
         btnReload = view.findViewById(R.id.btnReload)
     }
 
     private fun setListneresBtns(wv: WebView) {
-        btnAtras.setOnClickListener {
-            if (wv.canGoBack()) {
-                wv.goBack()
-            }
-        }
-
-        btnAdelante.setOnClickListener {
-            if (wv.canGoForward()) {
-                wv.goForward()
-            }
-        }
-
         btnReload.setOnClickListener {
             wv.reload()
         }
@@ -90,30 +75,29 @@ class NoticiasFragment : Fragment() {
         webView.settings.setSupportZoom(true)
         webView.settings.javaScriptEnabled = true
 
-        // Debido a error al entrar en la pagina del gobierno
-        //webView.webChromeClient = MyWebChromeClient()
-
         // Seteo la navegacion de los botones
         setListneresBtns(webView)
 
         // Fecha Actual
         val date = getCurrentDateTime()
         val matutinoFecha = date.toString("dd-MM")
-        //val viserinoFecha = date.toString("dd-MM-yy")
 
-        urlMatutino = "https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$matutinoFecha.pdf"
-        //val urlVisperino = "https://www.argentina.gob.ar/sites/default/files/$viserinoFecha-reporte-diario-vespertino-covid-19.pdf"
+        urlMatutino = "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$matutinoFecha.pdf"
 
-        webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=$urlMatutino")
-
-        // webView.loadUrl(urlVisperino)
+        webView.loadUrl(urlMatutino)
     }
 
-    // Nuevo WebClient para poner un progressBar
+    // Nueva implementacion de WebClient para poner un progressBar
     inner class MyWebClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             progressBar.visibility = View.VISIBLE
-            view.loadUrl(url)
+            if (url == urlMatutino) {
+                view.loadUrl(url)
+            }
+            else {
+                Toast.makeText(view.context, "No está permitida la navegación", Toast.LENGTH_SHORT).show()
+                view.loadUrl(urlMatutino)
+            }
             return true
         }
 
