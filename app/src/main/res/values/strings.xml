@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Concepción App</string>
+    <string name="app_name">Concepción DeliveryApp</string>
     <string name="tab_text_1">Locales</string>
     <string name="tab_text_2">Noticias</string>
     <string name="buscar">Buscar por comida, rubro, etc.</string>

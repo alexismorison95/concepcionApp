@@ -4,18 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
+import com.morris.concepcionapp.provider.NegocioProvider
 import kotlinx.android.synthetic.main.activity_buscar.*
 
-data class Negocio(val nombre: String,
-                   val horario: String,
-                   val whatsapp: String,
-                   val telefono: String,
-                   val descripcion: String,
-                   val direccion: String,
-                   val imagenURL: String,
-                   val rubro: String,
-                   val palabrasClave: String)
 
 class BuscarActivity : AppCompatActivity() {
 

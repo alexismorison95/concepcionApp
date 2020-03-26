@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="@dimen/padding16dp">
+            android:layout_margin="@dimen/paddingInicio">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -29,7 +29,8 @@
                     android:imeOptions="actionSearch"
                     android:singleLine="true"
                     android:inputType="text"
-                    android:layout_marginBottom="@dimen/padding16dp" />
+                    android:layout_marginBottom="@dimen/paddingInicio"
+                    android:focusedByDefault="false"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,15 +38,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/inicio_o_categoria"
+                android:textSize="15sp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/padding16dp"
+                android:layout_marginBottom="@dimen/paddingInicio"
                 android:textColor="@color/colorText" />
 
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
 
                 <Button
                     android:id="@+id/button_almacen"
@@ -54,7 +57,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_storefront_outline"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/almacen"
                     android:textColor="@color/colorPrimary"
@@ -67,7 +70,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_sausage"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/carniceria"
                     android:textColor="@color/colorPrimary"
@@ -80,7 +83,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_medical_bag"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/farmacia"
                     android:textColor="@color/colorPrimary"
@@ -93,7 +96,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_hammer_screwdriver"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/ferreteria"
                     android:textColor="@color/colorPrimary"
@@ -106,7 +109,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_pizza"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/gastronomia"
                     android:textColor="@color/colorPrimary"
@@ -119,7 +122,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_spray_bottle"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/limpieza"
                     android:textColor="@color/colorPrimary"
@@ -132,7 +135,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_basket"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/otro"
                     android:textColor="@color/colorPrimary"
@@ -145,7 +148,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_bread_slice"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/panaderia"
                     android:textColor="@color/colorPrimary"
@@ -155,14 +158,14 @@
                     android:id="@+id/button_verduleria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:background="@color/colorTransparent"
                     android:drawableStart="@drawable/ic_food_apple"
-                    android:drawablePadding="@dimen/padding16dp"
+                    android:drawablePadding="@dimen/paddingInicio"
                     android:gravity="start|center"
                     android:text="@string/verduleria"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
+                    android:textSize="@dimen/dimen20sp"
+                    android:layout_marginBottom="30dp"/>
 
             </LinearLayout>
 

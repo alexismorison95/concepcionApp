@@ -7,5 +7,6 @@
     <color name="colorBlack">#000000</color>
     <color name="colorText">#6A6A6A</color>
     <color name="colorTransparent">#006A6A6A</color>
+    <color name="colorGrisClaro">#EFEFEF</color>
 
 </resources>

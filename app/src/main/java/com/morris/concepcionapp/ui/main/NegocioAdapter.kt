@@ -1,5 +1,6 @@
 package com.morris.concepcionapp.ui.main
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.Image
@@ -14,8 +15,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
+import kotlin.Exception
 
 class NegocioAdapter(private val list: List<Negocio>): RecyclerView.Adapter<NegocioViewHolder>() {
 
@@ -47,10 +50,43 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private var direccion: TextView? = null
     private var imagen: ImageView? = null
 
-    // Para el toast
-    val view = inflater.inflate(R.layout.negocio_view, parent, false)
+    // Para los intent
+    private val view = inflater.inflate(R.layout.negocio_view, parent, false)
 
+    // Vinculo las vistas con los datos
     init {
+        setView()
+
+        // onClickListeners
+        whatsapp?.setOnClickListener {
+            try {
+                // Ruta para WhatsApp
+                val msjTo = "https://api.whatsapp.com/send?phone=" + whatsapp!!.text.toString()
+
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(msjTo)
+                view.context.startActivity(intent)
+            }
+            catch (e: Exception) {
+                Toast.makeText(view.context, e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        direccion?.setOnClickListener {
+            try {
+                // Ruta para Google Maps
+                val map = "http://maps.google.co.in/maps?q=" + direccion!!.text.toString() + ", Concepcion del uruguay, Entre Rios"
+
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(map))
+                view.context.startActivity(intent)
+            }
+            catch (e: Exception) {
+                Toast.makeText(view.context, e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setView() {
         nombre = itemView.findViewById(R.id.negocio_nombre)
         horario = itemView.findViewById(R.id.negocio_horarios)
         whatsapp = itemView.findViewById(R.id.negocio_whatsapp)
@@ -58,38 +94,24 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         descripcion = itemView.findViewById(R.id.negocio_descripcion)
         direccion = itemView.findViewById(R.id.negocio_direccion)
         imagen = itemView.findViewById(R.id.negocio_image)
-
-        // onClickListeners
-        whatsapp?.setOnClickListener {
-            Toast.makeText(view.context, "You clicked on TextView 'WhatsApp'.", Toast.LENGTH_SHORT).show()
-        }
-
-        telefono?.setOnClickListener {
-            Toast.makeText(view.context, "You clicked on TextView 'Telefono'.", Toast.LENGTH_SHORT).show()
-        }
-
-        direccion?.setOnClickListener {
-            Toast.makeText(view.context, "You clicked on TextView 'Direccion'.", Toast.LENGTH_SHORT).show()
-        }
     }
 
     fun bind(negocio: Negocio) {
         nombre?.text = negocio.nombre
         horario?.text = negocio.horario
         telefono?.text = negocio.telefono
-        //imagen?.setImageURI(Uri.parse(negocio.imagen))
+        descripcion?.text = negocio.descripcion
+
         Picasso.get().load(negocio.imagenURL).
             placeholder(R.drawable.progress_animation).
             error(R.drawable.ic_google_downasaur).
-            resize(800, 600).centerCrop().into(imagen)
+            fit().centerCrop().into(imagen)
 
         val nuevoWhatsapp = "<u>" + negocio.whatsapp + "</u>"
         whatsapp?.text = HtmlCompat.fromHtml(nuevoWhatsapp, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
-        val nuevaDireccion = "<u>" + negocio.direccion + "</u>"
+        val direccionArray = negocio.direccion.split(",")
+        val nuevaDireccion = "<u>" + direccionArray[0] + "</u>"
         direccion?.text = HtmlCompat.fromHtml(nuevaDireccion, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-        val nuevaDescripcion= "<b>Descripción:</b> " + negocio.descripcion
-        descripcion?.text = HtmlCompat.fromHtml(nuevaDescripcion, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }

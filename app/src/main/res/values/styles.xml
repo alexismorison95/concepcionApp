@@ -33,4 +33,8 @@
         <item name="colorControlNormal">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
 </resources>
