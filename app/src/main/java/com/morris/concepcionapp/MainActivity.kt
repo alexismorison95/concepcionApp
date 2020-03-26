@@ -1,5 +1,6 @@
 package com.morris.concepcionapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.morris.concepcionapp.ui.main.ComercianteActivity
 import com.morris.concepcionapp.ui.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,26 +38,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.button_comerciante -> {
+            if (R.id.button_comerciante == item.itemId) {
                 // Ejecuto codigo
-                Toast.makeText(this.applicationContext, "Comerciante", Toast.LENGTH_SHORT).show()
-                true
+                val intent = Intent(this, ComercianteActivity::class.java)
+
+                startActivity(intent)
             }
-            R.id.button_opciones -> {
-                // Ejecuto codigo
-                Toast.makeText(this.applicationContext, "Opciones", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.button_acerca_de -> {
-                // Ejecuto codigo
-                Toast.makeText(this.applicationContext, "Acerca de", Toast.LENGTH_SHORT).show()
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
+
+        return true
     }
 
     private fun configurarTabLayout() {

@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_buscar.*
 
 class BuscarActivity : AppCompatActivity() {
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,13 +7,5 @@
         android:id="@+id/button_comerciante"
         android:title="Sos comerciante?">
     </item>
-    <item
-        android:id="@+id/button_opciones"
-        android:title="Opciones">
-    </item>
-    <item
-        android:id="@+id/button_acerca_de"
-        android:title="Acerca de">
-    </item>
 
 </menu>
