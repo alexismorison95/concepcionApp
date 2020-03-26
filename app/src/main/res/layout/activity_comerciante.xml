@@ -54,12 +54,15 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_cuit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CUIT"
                     android:inputType="number"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"/>
+                    android:nextFocusForward="@id/formulario_nombre"
+                    android:singleLine="true"
+                    android:focusedByDefault="false"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,11 +78,13 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
                     android:inputType="text"
                     android:imeOptions="actionNext"
+                    android:nextFocusDown="@id/rgc_almacen"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -91,52 +96,63 @@
                 android:paddingBottom="6dp"/>
 
             <RadioGroup
+                android:id="@+id/radio_group_categoria"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:nextFocusForward="@id/radio_group_personal">
 
                 <RadioButton
+                    android:id="@+id/rgc_almacen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Almacen"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_carpinteria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Carniceria"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_farmacia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Farmacia"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_ferreteria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ferreteria"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_gastronomia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gastronomia"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_limpieza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Limpieza"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_panaderia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Panaderia"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_verduleria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Verduleria"/>
 
                 <RadioButton
+                    android:id="@+id/rgc_otro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Otro"/>
@@ -146,10 +162,12 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/rgc_otro_explicacion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Especifique"
                         android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/radio_group_personal"
                         android:singleLine="true"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
@@ -166,22 +184,27 @@
                 android:paddingBottom="6dp"/>
 
             <RadioGroup
+                android:id="@+id/radio_group_personal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:nextFocusForward="@id/formulario_horarios">
 
                 <RadioButton
+                    android:id="@+id/rgp_si_propio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sí, cuento con personal propio"/>
 
                 <RadioButton
+                    android:id="@+id/rgp_si_tercero"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sí, tercerizo el servicio en remiserías u otros actores"/>
 
                 <RadioButton
+                    android:id="@+id/rgp_no_pronto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="No, pero lo tendré pronto"/>
@@ -200,11 +223,13 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_horarios"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Horarios"
                     android:inputType="text"
                     android:imeOptions="actionNext"
+                    android:nextFocusForward="@id/formulario_numero"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -221,11 +246,13 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_numero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Numero"
                     android:inputType="phone"
                     android:imeOptions="actionNext"
+                    android:nextFocusForward="@id/formulario_whatsapp"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -242,11 +269,13 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_whatsapp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="WhatsApp"
                     android:inputType="phone"
                     android:imeOptions="actionNext"
+                    android:nextFocusForward="@id/formulario_mail"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -263,11 +292,13 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mail"
                     android:inputType="textEmailAddress"
                     android:imeOptions="actionNext"
+                    android:nextFocusForward="@id/formulario_direccion"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -284,6 +315,7 @@
                 android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_direccion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Dirección"
@@ -294,6 +326,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btn_guardar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Guardar"
