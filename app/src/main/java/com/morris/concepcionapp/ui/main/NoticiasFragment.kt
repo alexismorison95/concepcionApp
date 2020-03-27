@@ -36,7 +36,7 @@ class NoticiasFragment : Fragment() {
     private lateinit var webView: WebView
     private lateinit var progressBar: ProgressBar
     private lateinit var btnReload: FloatingActionButton
-    private var url: String? = null
+    private var urlMV: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -104,21 +104,21 @@ class NoticiasFragment : Fragment() {
         // Seteo la navegacion de los botones
         setListneresBtns(webView)
 
-        url = getUrlMV()
+        urlMV = getUrlMV()
 
-        webView.loadUrl(url)
+        webView.loadUrl(urlMV)
     }
 
     // Nueva implementacion de WebClient para poner un progressBar
     inner class MyWebClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             progressBar.visibility = View.VISIBLE
-            if (url == url) {
+            if (url == urlMV) {
                 view.loadUrl(url)
             }
             else {
-                Toast.makeText(view.context, "No está permitida la navegación", Toast.LENGTH_SHORT).show()
-                view.loadUrl(url)
+                Toast.makeText(view.context, "No está permitida la navegación", Toast.LENGTH_LONG).show()
+                view.loadUrl(urlMV)
             }
             return true
         }
@@ -130,7 +130,7 @@ class NoticiasFragment : Fragment() {
 
         override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
             super.onReceivedError(view, request, error)
-            webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=$url")
+            webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=$urlMV")
         }
     }
 

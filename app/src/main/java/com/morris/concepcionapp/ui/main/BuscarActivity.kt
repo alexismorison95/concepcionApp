@@ -2,6 +2,8 @@ package com.morris.concepcionapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.morris.concepcionapp.Negocio
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_buscar.*
 class BuscarActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
+    private lateinit var buscarNotFound: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +30,22 @@ class BuscarActivity : AppCompatActivity() {
         toolbar.title = busqueda.capitalize()
         toolbar.setNavigationOnClickListener { this.finish() }
 
+        // LinearLayout Not Found
+        buscarNotFound = findViewById(R.id.buscar_not_found)
+
         // Lista que coincide con lo buscado
-        val listaNegocios = buscar(busqueda, tipoBusqueda)
+        var listaNegocios = buscar(busqueda, tipoBusqueda)
+        listaNegocios = listOf() // Probando lista vacia
+
+        // Validacion lista
+        if (listaNegocios.isEmpty()) {
+            recycle_list_view.visibility = View.GONE
+            buscarNotFound.visibility = View.VISIBLE
+        }
+        else {
+            recycle_list_view.visibility = View.VISIBLE
+            buscarNotFound.visibility = View.GONE
+        }
 
         // Cargo las vistas en el recyclerView
         recycle_list_view.apply {

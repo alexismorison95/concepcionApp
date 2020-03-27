@@ -38,14 +38,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/formulario_explicacion"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:layout_marginBottom="16dp"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CUIT del comercio."
+                android:text="Indique el CUIT del comercio."
                 android:textColor="@color/colorText"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -66,10 +72,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre comercial del comercio."
+                android:text="Indique el Nombre comercial del comercio."
                 android:textColor="@color/colorText"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,11 +101,18 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="¿A qué se dedica el comercio? Indique la opcion que corresponda."
-                android:paddingBottom="6dp"/>
+                android:paddingBottom="6dp"
+                android:textColor="@color/colorText"/>
 
             <RadioGroup
                 android:id="@+id/radio_group_categoria"
@@ -177,11 +196,18 @@
 
             </RadioGroup>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="¿Su empresa realiza actualmente servicios de delivery?"
-                android:paddingBottom="6dp"/>
+                android:paddingBottom="6dp"
+                android:textColor="@color/colorText"/>
 
             <RadioGroup
                 android:id="@+id/radio_group_personal"
@@ -211,6 +237,12 @@
 
             </RadioGroup>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -233,6 +265,12 @@
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -257,6 +295,12 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -279,6 +323,12 @@
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -303,6 +353,12 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -325,13 +381,54 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cargar una foto del comercio."
+                android:textColor="@color/colorText"
+                android:paddingBottom="8dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/foto_comerciante"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorGrisClaro"
+                    android:scaleType="centerCrop"/>
+
+                <Button
+                    android:id="@+id/btn_cargar_foto"
+                    android:layout_width="47dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:drawableEnd="@drawable/ic_add_a_photo_black_24dp" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
             <Button
                 android:id="@+id/btn_guardar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Guardar"
+                android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
 
