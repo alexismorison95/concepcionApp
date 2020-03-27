@@ -36,7 +36,7 @@ class NoticiasFragment : Fragment() {
     private lateinit var webView: WebView
     private lateinit var progressBar: ProgressBar
     private lateinit var btnReload: FloatingActionButton
-    private var urlMatutino: String? = null
+    private var url: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -66,37 +66,59 @@ class NoticiasFragment : Fragment() {
         return formatter.format(this)
     }
 
-    private fun getCurrentDateTime(): Date {
-        return Calendar.getInstance().time
+    private fun getUrlMV(): String {
+        val date = Calendar.getInstance().time
+        val hora = date.toString("HH").toInt()
+
+        val calendar = Calendar.getInstance()
+
+        if (hora in 2..11) {
+            // Vespertino dia anterior
+            calendar.add(Calendar.DAY_OF_YEAR, -1)
+            val fecha = calendar.time.toString("dd-MM-yy")
+
+            return "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-diario-vespertino-covid-19.pdf"
+        }
+        else {
+            return if (hora < 2) {
+                // Matutino dia anterior
+                calendar.add(Calendar.DAY_OF_YEAR, -1)
+                val fecha = calendar.time.toString("dd-MM")
+
+                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$fecha.pdf"
+            } else {
+                // Matutino de hoy desde las 12 AM
+                val fecha = calendar.time.toString("dd-MM")
+
+                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$fecha.pdf"
+            }
+        }
     }
 
     private fun loadPDF() {
         webView.webViewClient = MyWebClient()
-        webView.settings.setSupportZoom(true)
-        webView.settings.javaScriptEnabled = true
+        webView.settings.javaScriptEnabled = true // Necesito esto para que google muestre los controles del pdf
+        webView.settings.builtInZoomControls = true
+        webView.settings.displayZoomControls = false
 
         // Seteo la navegacion de los botones
         setListneresBtns(webView)
 
-        // Fecha Actual
-        val date = getCurrentDateTime()
-        val matutinoFecha = date.toString("dd-MM")
+        url = getUrlMV()
 
-        urlMatutino = "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$matutinoFecha.pdf"
-
-        webView.loadUrl(urlMatutino)
+        webView.loadUrl(url)
     }
 
     // Nueva implementacion de WebClient para poner un progressBar
     inner class MyWebClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             progressBar.visibility = View.VISIBLE
-            if (url == urlMatutino) {
+            if (url == url) {
                 view.loadUrl(url)
             }
             else {
                 Toast.makeText(view.context, "No está permitida la navegación", Toast.LENGTH_SHORT).show()
-                view.loadUrl(urlMatutino)
+                view.loadUrl(url)
             }
             return true
         }
@@ -108,7 +130,7 @@ class NoticiasFragment : Fragment() {
 
         override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
             super.onReceivedError(view, request, error)
-            webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=$urlMatutino")
+            webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=$url")
         }
     }
 

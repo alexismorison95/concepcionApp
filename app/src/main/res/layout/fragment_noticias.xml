@@ -10,9 +10,8 @@
     <WebView
         android:id="@+id/noticias_webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
-    
+        android:layout_height="match_parent"/>
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
