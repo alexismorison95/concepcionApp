@@ -72,25 +72,25 @@ class NoticiasFragment : Fragment() {
 
         val calendar = Calendar.getInstance()
 
-        if (hora in 2..11) {
+        if (hora in 2..18) {
             // Vespertino dia anterior
             calendar.add(Calendar.DAY_OF_YEAR, -1)
             val fecha = calendar.time.toString("dd-MM-yy")
 
-            return "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-diario-vespertino-covid-19.pdf"
+            return "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-vespertino-covid-19.pdf"
         }
         else {
             return if (hora < 2) {
                 // Matutino dia anterior
                 calendar.add(Calendar.DAY_OF_YEAR, -1)
-                val fecha = calendar.time.toString("dd-MM")
+                val fecha = calendar.time.toString("dd-MM-yy")
 
-                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$fecha.pdf"
+                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-matutino-covid-19.pdf"
             } else {
                 // Matutino de hoy desde las 12 AM
-                val fecha = calendar.time.toString("dd-MM")
+                val fecha = calendar.time.toString("dd-MM-yy")
 
-                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/covid19_informe-diario-matutino-$fecha.pdf"
+                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-matutino-covid-19.pdf"
             }
         }
     }

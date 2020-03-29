@@ -8,4 +8,4 @@ data class Negocio(val nombre: String,
                    val direccion: String,
                    val imagenURL: String,
                    val rubro: String,
-                   val palabrasClave: String)
+                   val usuario: String)

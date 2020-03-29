@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "764282278059",
+    "firebase_url": "https://concepcionapp-803a6.firebaseio.com",
+    "project_id": "concepcionapp-803a6",
+    "storage_bucket": "concepcionapp-803a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764282278059:android:a58a85e09309e9f85aa7ee",
+        "android_client_info": {
+          "package_name": "com.morris.concepcionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764282278059-qdroobkgkjp0279sd9i6ba76iaspet75.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.morris.concepcionapp",
+            "certificate_hash": "9d047140b17db7a9534ea8d779dd78d878a78849"
+          }
+        },
+        {
+          "client_id": "764282278059-oac7l0scam820eeoda2jg2iqq5mu9dhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuGMMtJtvNYhyWOmqzDg_t22KspjqiXag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764282278059-oac7l0scam820eeoda2jg2iqq5mu9dhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

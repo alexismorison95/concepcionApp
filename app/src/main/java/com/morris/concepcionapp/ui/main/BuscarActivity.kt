@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
-import com.morris.concepcionapp.provider.NegocioProvider
 import kotlinx.android.synthetic.main.activity_buscar.*
 
 
@@ -25,13 +24,11 @@ class BuscarActivity : AppCompatActivity() {
         val busqueda = intent.getSerializableExtra("busqueda").toString()
         val tipoBusqueda = intent.getSerializableExtra("tipo").toString()
 
-        // Toolbar
-        toolbar = findViewById(R.id.toolbarBuscar)
-        toolbar.title = busqueda.capitalize()
-        toolbar.setNavigationOnClickListener { this.finish() }
+        // Database
 
-        // LinearLayout Not Found
-        buscarNotFound = findViewById(R.id.buscar_not_found)
+
+        setViews(busqueda)
+
 
         // Lista que coincide con lo buscado
         var listaNegocios = buscar(busqueda, tipoBusqueda)
@@ -52,6 +49,16 @@ class BuscarActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this.context)
             adapter = NegocioAdapter(listaNegocios)
         }
+    }
+
+    private fun setViews(busqueda: String) {
+        // Toolbar
+        toolbar = findViewById(R.id.toolbarBuscar)
+        toolbar.title = busqueda.capitalize()
+        toolbar.setNavigationOnClickListener { this.finish() }
+
+        // LinearLayout Not Found
+        buscarNotFound = findViewById(R.id.buscar_not_found)
     }
 
     private fun buscar(busqueda: String, tipoBusqueda: String): List<Negocio> {

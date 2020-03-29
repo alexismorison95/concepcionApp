@@ -18,8 +18,7 @@
             android:theme="@style/ToolbarTheme"
             android:background="@color/colorPrimaryDark"
             app:titleTextColor="@color/colorAccent"
-            app:navigationIcon="?attr/homeAsUpIndicator"
-            app:title="Formulario"/>
+            app:navigationIcon="?attr/homeAsUpIndicator"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -188,7 +187,6 @@
                         android:imeOptions="actionNext"
                         android:nextFocusForward="@id/radio_group_personal"
                         android:singleLine="true"
-                        android:focusable="false"
                         android:focusableInTouchMode="false"
                         android:inputType="text"/>
 
@@ -411,7 +409,7 @@
                     android:layout_width="47dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
-                    android:drawableEnd="@drawable/ic_add_a_photo_black_24dp" />
+                    android:drawableEnd="@drawable/ic_image_black_24dp" />
 
             </FrameLayout>
 
