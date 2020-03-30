@@ -248,7 +248,7 @@ class ComercianteActivity : AppCompatActivity() {
 
                 Toast.makeText(applicationContext, "Sus datos se guardaron con exito", Toast.LENGTH_LONG).show()
 
-
+                // Me gustaria que me mande un mail aca
 
                 this.finish()
             }

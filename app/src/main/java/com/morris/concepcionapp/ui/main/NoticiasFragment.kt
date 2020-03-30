@@ -77,7 +77,7 @@ class NoticiasFragment : Fragment() {
             calendar.add(Calendar.DAY_OF_YEAR, -1)
             val fecha = calendar.time.toString("dd-MM-yy")
 
-            return "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-vespertino-covid-19.pdf"
+            return "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/${fecha}_reporte_vespertino_covid_19.pdf"
         }
         else {
             return if (hora < 2) {
