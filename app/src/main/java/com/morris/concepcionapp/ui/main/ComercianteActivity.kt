@@ -227,7 +227,7 @@ class ComercianteActivity : AppCompatActivity() {
                                 formularioWhatsapp.text.toString(),
                                 formularioNumero.text.toString(),
                                 formularioDescripcion.text.toString(),
-                                formularioDireccion.text.toString(),
+                                "${formularioDireccion.text.toString()}, Concepción del Uruguay, Entre Ríos",
                                 imagenURL,
                                 radioButtonCategoria?.text.toString().toLowerCase(),
                                 formularioCuit.text.toString(),

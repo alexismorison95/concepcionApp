@@ -152,13 +152,13 @@
                     android:id="@+id/rgc_almacen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Almacen"/>
+                    android:text="Almacén"/>
 
                 <RadioButton
                     android:id="@+id/rgc_carpinteria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Carniceria"/>
+                    android:text="Carnicería"/>
 
                 <RadioButton
                     android:id="@+id/rgc_farmacia"
@@ -170,13 +170,13 @@
                     android:id="@+id/rgc_ferreteria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ferreteria"/>
+                    android:text="Ferretería"/>
 
                 <RadioButton
                     android:id="@+id/rgc_gastronomia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gastronomia"/>
+                    android:text="Gastronomía"/>
 
                 <RadioButton
                     android:id="@+id/rgc_limpieza"
@@ -188,13 +188,13 @@
                     android:id="@+id/rgc_panaderia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Panaderia"/>
+                    android:text="Panadería"/>
 
                 <RadioButton
                     android:id="@+id/rgc_verduleria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Verduleria"/>
+                    android:text="Verdulería"/>
 
                 <RadioButton
                     android:id="@+id/rgc_otro"

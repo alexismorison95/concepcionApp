@@ -20,7 +20,7 @@ import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
 import kotlin.Exception
 
-class NegocioAdapter(private val list: List<Negocio>): RecyclerView.Adapter<NegocioViewHolder>() {
+class NegocioAdapter(private val list: MutableList<Negocio>): RecyclerView.Adapter<NegocioViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NegocioViewHolder {
         var inflater = LayoutInflater.from(parent.context)
@@ -110,7 +110,7 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         val nuevoWhatsapp = "<u>" + negocio.whatsapp + "</u>"
         whatsapp?.text = HtmlCompat.fromHtml(nuevoWhatsapp, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
-        val direccionArray = negocio.direccion.split(",")
+        val direccionArray = negocio.direccion!!.split(",")
         val nuevaDireccion = "<u>" + direccionArray[0] + "</u>"
         direccion?.text = HtmlCompat.fromHtml(nuevaDireccion, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
