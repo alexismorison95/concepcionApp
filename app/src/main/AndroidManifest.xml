@@ -14,8 +14,7 @@
         <activity android:name=".ui.main.ComercianteActivity"></activity>
         <activity android:name=".ui.main.BuscarActivity" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/SplashTheme">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

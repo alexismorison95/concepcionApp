@@ -89,7 +89,6 @@ class ComercianteActivity : AppCompatActivity() {
     private fun setViews() {
         // Toolbar
         toolbar = findViewById(R.id.toolbarComerciante)
-        toolbar.setNavigationOnClickListener { this.finish() }
 
         // Progress Bar
         llProgressBar = findViewById(R.id.llProgrssBar)
@@ -117,6 +116,10 @@ class ComercianteActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+
+        // Toolbar
+        toolbar.setNavigationOnClickListener { this.finish() }
+
         // Foto
         btnCargarFoto.setOnClickListener {
             val intent = Intent().setType("image/*").setAction(Intent.ACTION_GET_CONTENT)
@@ -284,7 +287,14 @@ class ComercianteActivity : AppCompatActivity() {
             }
             else {
                 // Sign in failed.
-                this.finish()
+                // Cierro la sesion de usuario actual
+                AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener {
+                        this.finish()
+                    }
+
+                //this.finish()
             }
         }
 
