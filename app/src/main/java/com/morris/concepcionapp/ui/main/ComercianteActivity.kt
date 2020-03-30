@@ -2,8 +2,13 @@ package com.morris.concepcionapp.ui.main
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.firebase.ui.auth.AuthUI
@@ -11,14 +16,21 @@ import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 class ComercianteActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var imageView: ImageView
+    private lateinit var llProgressBar: LinearLayout
+    private lateinit var imagenURL: String
 
     // Auth
     private lateinit var usuario: FirebaseUser
@@ -27,12 +39,12 @@ class ComercianteActivity : AppCompatActivity() {
     // TextEdits
     private lateinit var formularioCuit: TextInputEditText
     private lateinit var formularioNombre: TextInputEditText
-    private lateinit var formularioOtro: TextInputEditText
     private lateinit var formularioHorario: TextInputEditText
     private lateinit var formularioNumero: TextInputEditText
     private lateinit var formularioWhatsapp: TextInputEditText
     private lateinit var formularioMail: TextInputEditText
     private lateinit var formularioDireccion: TextInputEditText
+    private lateinit var formularioDescripcion: TextInputEditText
 
     // Buttons
     private lateinit var btnCargarFoto: Button
@@ -41,8 +53,8 @@ class ComercianteActivity : AppCompatActivity() {
     // RadioButtons
     private lateinit var radioGroupCategoria: RadioGroup
     private lateinit var radioGroupPersonal: RadioGroup
-    private lateinit var radioButtonCategoria: RadioButton
-    private lateinit var radioButtonPersonal: RadioButton
+    private var radioButtonCategoria: RadioButton? = null
+    private var radioButtonPersonal: RadioButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Theme
@@ -79,6 +91,9 @@ class ComercianteActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbarComerciante)
         toolbar.setNavigationOnClickListener { this.finish() }
 
+        // Progress Bar
+        llProgressBar = findViewById(R.id.llProgrssBar)
+
         // Buttons
         btnGuardar = findViewById(R.id.btn_guardar)
         btnCargarFoto = findViewById(R.id.btn_cargar_foto)
@@ -88,15 +103,14 @@ class ComercianteActivity : AppCompatActivity() {
         radioGroupPersonal = findViewById(R.id.radio_group_personal)
 
         // TextEdits
-        formularioOtro = findViewById(R.id.rgc_otro_explicacion)
-        formularioCuit = findViewById(R.id.rgc_otro_explicacion)
-        formularioNombre = findViewById(R.id.rgc_otro_explicacion)
-        formularioOtro = findViewById(R.id.rgc_otro_explicacion)
-        formularioHorario = findViewById(R.id.rgc_otro_explicacion)
-        formularioNumero = findViewById(R.id.rgc_otro_explicacion)
-        formularioWhatsapp = findViewById(R.id.rgc_otro_explicacion)
-        formularioMail = findViewById(R.id.rgc_otro_explicacion)
-        formularioDireccion = findViewById(R.id.rgc_otro_explicacion)
+        formularioCuit = findViewById(R.id.formulario_cuit)
+        formularioNombre = findViewById(R.id.formulario_nombre)
+        formularioHorario = findViewById(R.id.formulario_horarios)
+        formularioNumero = findViewById(R.id.formulario_numero)
+        formularioWhatsapp = findViewById(R.id.formulario_whatsapp)
+        formularioMail = findViewById(R.id.formulario_mail)
+        formularioDireccion = findViewById(R.id.formulario_direccion)
+        formularioDescripcion = findViewById(R.id.formulario_descripcion)
 
         // Foto
         imageView = findViewById(R.id.foto_comerciante)
@@ -112,54 +126,138 @@ class ComercianteActivity : AppCompatActivity() {
 
         // Guardar formulario
         btnGuardar.setOnClickListener {
-            validarFormulario()
+            try {
+                validarFormulario()
+            }
+            catch (e: Exception) {
+                Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
+            }
         }
 
         // Radio Groups Categoria
         radioGroupCategoria.setOnCheckedChangeListener { _, checkedId ->
             radioButtonCategoria = findViewById(checkedId)
-
-            if (radioButtonCategoria.id == R.id.rgc_otro) {
-                formularioOtro.isFocusableInTouchMode = true
-                formularioOtro.requestFocus()
-            }
-
-            Toast.makeText(applicationContext,"On checked change :${radioButtonCategoria.text}", Toast.LENGTH_SHORT).show()
         }
 
         // Radio Groups Personal
         radioGroupPersonal.setOnCheckedChangeListener { _, checkedId ->
             radioButtonPersonal = findViewById(checkedId)
-
-            Toast.makeText(applicationContext,"On checked change :${radioButtonPersonal.text}", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun validarFormulario() {
         // Validaciones
-        if (radioButtonCategoria.id == -1 &&
-            radioButtonPersonal.id == -1 &&
+        if (!radioButtonCategoria!!.isChecked &&
+            !radioButtonPersonal!!.isChecked  &&
             formularioCuit.text.isNullOrBlank() &&
             formularioNombre.text.isNullOrBlank() &&
             formularioDireccion.text.isNullOrBlank() &&
             formularioHorario.text.isNullOrBlank() &&
             formularioMail.text.isNullOrBlank() &&
             formularioNumero.text.isNullOrBlank() &&
-            formularioWhatsapp.text.isNullOrBlank()
+            formularioWhatsapp.text.isNullOrBlank() &&
+            formularioDescripcion.text.isNullOrBlank()
         ) {
             Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
         }
         else {
-            guardarFormulario()
+            // Si todos los campos estan llenos, subo la foto
+            subirFoto()
+        }
+    }
+
+    private fun subirFoto() {
+
+        // Muestro el progress bar
+        llProgressBar.visibility = View.VISIBLE
+
+        // Guardar foto
+        var storage = FirebaseStorage.getInstance("gs://concepcionapp-803a6.appspot.com")
+
+        // Create a storage reference from our app
+        val storageRef = storage.reference
+
+        // Create a reference to "mountains.jpg"
+        val nombreArch = formularioNombre.text.toString()
+        val imagenRef = storageRef.child("$nombreArch.jpg")
+
+        // Get the data from an ImageView as bytes
+        imageView.isDrawingCacheEnabled = true
+        imageView.buildDrawingCache()
+
+        val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+
+        val data = baos.toByteArray()
+
+        val uploadTask = imagenRef.putBytes(data)
+
+        val urlTask = uploadTask.continueWithTask { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
+                }
+            }
+            imagenRef.downloadUrl
+        }.addOnCompleteListener { task ->
+
+            if (task.isSuccessful) {
+                // La imagen se subio, obtengo la URL
+                imagenURL = task.result.toString()
+
+                guardarFormulario()
+
+            } else {
+                // Handle failures
+                Toast.makeText(applicationContext, "No se pudo subir la imagen", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
     private fun guardarFormulario() {
 
-        // Guardar en Firebase
+        // Access a Cloud Firestore instance from your Activity
+        val db = FirebaseFirestore.getInstance()
 
+        // Creo el objeto negocio
+        val negocio = Negocio(formularioNombre.text.toString(),
+                                formularioHorario.text.toString(),
+                                formularioWhatsapp.text.toString(),
+                                formularioNumero.text.toString(),
+                                formularioDescripcion.text.toString(),
+                                formularioDireccion.text.toString(),
+                                imagenURL,
+                                radioButtonCategoria?.text.toString().toLowerCase(),
+                                formularioCuit.text.toString(),
+                                radioButtonPersonal?.text.toString().toLowerCase(),
+                                usuario.uid,
+                                usuario.displayName.toString(),
+                                usuario.email.toString(),
+                                usuario.phoneNumber.toString(),
+                                false
+        )
+
+        db.collection("negocios")
+            .add(negocio)
+            .addOnSuccessListener {
+
+                // Se subio la coleccion, detengo el progress bar
+                llProgressBar.visibility = View.GONE
+
+                Toast.makeText(applicationContext, "Sus datos se guardaron con exito", Toast.LENGTH_LONG).show()
+
+
+
+                this.finish()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
+            }
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -179,7 +277,7 @@ class ComercianteActivity : AppCompatActivity() {
                 // Successfully signed in
                 usuario = FirebaseAuth.getInstance().currentUser!!
 
-                toolbar.title = usuario.displayName?.toUpperCase(Locale.ROOT)
+                toolbar.title = usuario.displayName?.let { createTitle(it) }
             }
             else {
                 // Sign in failed.
@@ -189,5 +287,16 @@ class ComercianteActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun createTitle(nombre: String): String {
+        val aux = nombre.split(" ")
+        var titulo = ""
+
+        for (palabra in aux) {
+            titulo += palabra.capitalize() + " "
+        }
+
+        return titulo
     }
 }

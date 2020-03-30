@@ -8,4 +8,11 @@ data class Negocio(val nombre: String,
                    val direccion: String,
                    val imagenURL: String,
                    val rubro: String,
-                   val usuario: String)
+                   val cuit: String,
+                   val delivery: String,
+                   val usuarioID: String,
+                   val usuarioNombre: String,
+                   val usuarioEmail: String,
+                   val usuarioPhoneNumber: String,
+                   val isVerificado: Boolean
+)

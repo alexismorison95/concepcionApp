@@ -13,5 +13,5 @@
     <string name="otro">Otro</string>
     <string name="panaderia">Panadería</string>
     <string name="verduleria">Verdulería</string>
-    <string name="formulario_explicacion">Si tenes un comercio que tiene delivery o lo estarás incorporando en los próximos días, completa este formulario para incluirlo en el sistema.</string>
+    <string name="formulario_explicacion">Si tenes un comercio que tiene delivery o lo estarás incorporando en los próximos días, completa este formulario para incluirlo en el sistema. Su negocio sera visible una vez que un administrador verifique sus datos.</string>
 </resources>

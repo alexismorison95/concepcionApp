@@ -8,5 +8,6 @@
     <color name="colorText">#6A6A6A</color>
     <color name="colorTransparent">#006A6A6A</color>
     <color name="colorGrisClaro">#EFEFEF</color>
+    <color name="colorSemiTransparent">#8F000000</color>
 
 </resources>

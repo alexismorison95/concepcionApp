@@ -95,7 +95,35 @@
                     android:hint="Nombre"
                     android:inputType="text"
                     android:imeOptions="actionNext"
-                    android:nextFocusDown="@id/rgc_almacen"
+                    android:nextFocusDown="@id/formulario_descripcion"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrisClaro"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Indique una descripcion del comercio."
+                android:textColor="@color/colorText"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/formulario_descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Descripcion"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -118,8 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp"
-                android:nextFocusForward="@id/radio_group_personal">
+                android:layout_marginBottom="16dp">
 
                 <RadioButton
                     android:id="@+id/rgc_almacen"
@@ -175,23 +202,6 @@
                     android:layout_height="wrap_content"
                     android:text="Otro"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/rgc_otro_explicacion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Especifique"
-                        android:imeOptions="actionNext"
-                        android:nextFocusForward="@id/radio_group_personal"
-                        android:singleLine="true"
-                        android:focusableInTouchMode="false"
-                        android:inputType="text"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
             </RadioGroup>
 
             <ImageView
@@ -212,8 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp"
-                android:nextFocusForward="@id/formulario_horarios">
+                android:layout_marginBottom="16dp">
 
                 <RadioButton
                     android:id="@+id/rgp_si_propio"
@@ -431,5 +440,10 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <include
+        android:id="@+id/llProgrssBar"
+        android:visibility="gone"
+        layout="@layout/progress_bar_custom"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
