@@ -248,9 +248,12 @@ class ComercianteActivity : AppCompatActivity() {
 
                 Toast.makeText(applicationContext, "Sus datos se guardaron con exito", Toast.LENGTH_LONG).show()
 
-                // Me gustaria que me mande un mail aca
-
-                this.finish()
+                // Cierro la sesion de usuario actual
+                AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener {
+                        this.finish()
+                    }
             }
             .addOnFailureListener { e ->
                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
@@ -281,7 +284,6 @@ class ComercianteActivity : AppCompatActivity() {
             }
             else {
                 // Sign in failed.
-                Toast.makeText(applicationContext, response?.error?.message, Toast.LENGTH_LONG).show()
                 this.finish()
             }
         }
