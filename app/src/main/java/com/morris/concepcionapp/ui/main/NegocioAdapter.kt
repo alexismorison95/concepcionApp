@@ -97,10 +97,10 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     }
 
     fun bind(negocio: Negocio) {
-        nombre?.text = negocio.nombre
-        horario?.text = negocio.horario
+        nombre?.text = negocio.nombre?.capitalize()
+        horario?.text = negocio.horario?.capitalize()
         telefono?.text = negocio.telefono
-        descripcion?.text = negocio.descripcion
+        descripcion?.text = negocio.descripcion?.capitalize()
 
         Picasso.get().load(negocio.imagenURL).
             placeholder(R.drawable.progress_animation).
@@ -111,7 +111,7 @@ class NegocioViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         whatsapp?.text = HtmlCompat.fromHtml(nuevoWhatsapp, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
         val direccionArray = negocio.direccion!!.split(",")
-        val nuevaDireccion = "<u>" + direccionArray[0] + "</u>"
+        val nuevaDireccion = "<u>" + direccionArray[0].capitalize() + "</u>"
         direccion?.text = HtmlCompat.fromHtml(nuevaDireccion, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }

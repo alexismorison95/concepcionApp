@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
 import kotlinx.android.synthetic.main.activity_buscar.*
+import java.text.Normalizer
 
 
 class BuscarActivity : AppCompatActivity() {
@@ -30,12 +31,10 @@ class BuscarActivity : AppCompatActivity() {
         val busqueda = intent.getSerializableExtra("busqueda").toString()
         val tipoBusqueda = intent.getSerializableExtra("tipo").toString()
 
-
         setViews(busqueda)
 
         // Busco en la bbdd
         getNegocios(busqueda, tipoBusqueda)
-
     }
 
     private fun setViews(busqueda: String) {
@@ -83,14 +82,29 @@ class BuscarActivity : AppCompatActivity() {
         // Access a Cloud Firestore instance from your Activity
         val db = FirebaseFirestore.getInstance()
 
+        val negociosRef = db.collection("negocios")
+
         if (tipoBusqueda == "todo") {
-            // TODO: Terminar la busqueda personalizada
             // Busqueda por lo que sea
+            negociosRef.whereEqualTo("verificado", true)
+                .get()
+                .addOnSuccessListener { documents ->
+                    var negocios = mutableListOf<Negocio>()
+
+                    for (doc in documents) {
+                        negocios.add(doc.toObject(Negocio::class.java))
+                    }
+
+                    var negociosFiltrados = filtrarBusqueda(negocios, busqueda)
+
+                    loadRecyclerViews(negociosFiltrados)
+                }
+                .addOnFailureListener {
+                    showError()
+                }
         }
         else {
             // busqueda por categoria
-            val negociosRef = db.collection("negocios")
-
             negociosRef.whereEqualTo("rubro", busqueda.toLowerCase())
                 .whereEqualTo("verificado", true)
                 .get()
@@ -99,25 +113,55 @@ class BuscarActivity : AppCompatActivity() {
                     var negocios = mutableListOf<Negocio>()
 
                     for (doc in documents) {
-
-                        Log.d("Consulta", "${doc.id} => ${doc.data}")
-
                         negocios.add(doc.toObject(Negocio::class.java))
                     }
 
                     loadRecyclerViews(negocios)
                 }
-                .addOnFailureListener { exception ->
-                    llProgressBar.visibility = View.GONE
-
-                    textView.text = "Error del servidor"
-
-                    recycle_list_view.visibility = View.GONE
-                    buscarNotFound.visibility = View.VISIBLE
-
-                    Toast.makeText(applicationContext, exception.message, Toast.LENGTH_LONG).show()
+                .addOnFailureListener {
+                    showError()
                 }
         }
+    }
+
+    private fun filtrarBusqueda(negocios: MutableList<Negocio>, busqueda: String): MutableList<Negocio> {
+        var res = mutableListOf<Negocio>()
+
+        // Ahora itero para cada atributo que se puede buscar
+        for (neg in negocios) {
+            // Nombre
+            if (quitarTildes(neg.nombre!!).contains(busqueda)) { res.add(neg) }
+            // Horario
+            if (quitarTildes(neg.horario!!).contains(busqueda)) { res.add(neg) }
+            // Descripcion
+            if (quitarTildes(neg.descripcion!!).contains(busqueda)) { res.add(neg) }
+            // Rubro
+            if (quitarTildes(neg.rubro!!).contains(busqueda)) { res.add(neg) }
+        }
+
+        // Quito los objetos repetidos
+        res.distinctBy { Pair(it.nombre, it.imagenURL) }
+
+        return res
+    }
+
+    private fun quitarTildes(palabra: String): String {
+        val REGEX_UNACCENT = "\\p{InCombiningDiacriticalMarks}+".toRegex()
+
+        val temp = Normalizer.normalize(palabra, Normalizer.Form.NFD)
+        val sinTildes = REGEX_UNACCENT.replace(temp, "")
+        Log.d("Sin tilde", sinTildes)
+
+        return sinTildes
+    }
+
+    private fun showError() {
+        llProgressBar.visibility = View.GONE
+
+        textView.text = "Error del servidor"
+
+        recycle_list_view.visibility = View.GONE
+        buscarNotFound.visibility = View.VISIBLE
     }
 
 }

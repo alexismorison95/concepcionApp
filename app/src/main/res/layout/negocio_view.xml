@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Nombre de negocio"
             android:textSize="25sp"
+            android:textColor="@color/colorBlack"
             android:textStyle="bold"/>
 
         <TextView
