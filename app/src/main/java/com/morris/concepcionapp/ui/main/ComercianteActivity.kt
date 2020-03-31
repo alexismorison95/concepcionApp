@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -18,12 +19,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.morris.concepcionapp.Funciones
 import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.util.*
+import kotlin.math.log
 
 class ComercianteActivity : AppCompatActivity() {
 
@@ -56,6 +59,7 @@ class ComercianteActivity : AppCompatActivity() {
     private var radioButtonCategoria: RadioButton? = null
     private var radioButtonPersonal: RadioButton? = null
 
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         // Theme
         setTheme(R.style.AppThemeInicio)
@@ -71,6 +75,7 @@ class ComercianteActivity : AppCompatActivity() {
     }
 
     private fun authGoogle() {
+
         // Array con las formas disponibles para iniciar sesion
         val providers = arrayListOf(
             AuthUI.IdpConfig.GoogleBuilder().build()
@@ -87,6 +92,7 @@ class ComercianteActivity : AppCompatActivity() {
     }
 
     private fun setViews() {
+
         // Toolbar
         toolbar = findViewById(R.id.toolbarComerciante)
 
@@ -122,17 +128,19 @@ class ComercianteActivity : AppCompatActivity() {
 
         // Foto
         btnCargarFoto.setOnClickListener {
-            val intent = Intent().setType("image/*").setAction(Intent.ACTION_GET_CONTENT)
 
+            val intent = Intent().setType("image/*").setAction(Intent.ACTION_GET_CONTENT)
             startActivityForResult(Intent.createChooser(intent, "Seleccionar imagen"), 111)
         }
 
         // Guardar formulario
         btnGuardar.setOnClickListener {
+
             try {
                 validarFormulario()
             }
             catch (e: Exception) {
+                Log.d("Formulario error", e.message)
                 Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
             }
         }
@@ -149,6 +157,7 @@ class ComercianteActivity : AppCompatActivity() {
     }
 
     private fun validarFormulario() {
+
         // Validaciones
         if (!radioButtonCategoria!!.isChecked &&
             !radioButtonPersonal!!.isChecked  &&
@@ -174,13 +183,13 @@ class ComercianteActivity : AppCompatActivity() {
         // Muestro el progress bar
         llProgressBar.visibility = View.VISIBLE
 
-        // Guardar foto
+        // Me conecto con firebase
         var storage = FirebaseStorage.getInstance("gs://concepcionapp-803a6.appspot.com")
 
         // Create a storage reference from our app
         val storageRef = storage.reference
 
-        // Create a reference to "mountains.jpg"
+        // Create a reference to my file
         val nombreArch = formularioNombre.text.toString()
         val imagenRef = storageRef.child("$nombreArch.jpg")
 
@@ -197,12 +206,14 @@ class ComercianteActivity : AppCompatActivity() {
 
         val uploadTask = imagenRef.putBytes(data)
 
-        val urlTask = uploadTask.continueWithTask { task ->
+        uploadTask.continueWithTask { task ->
+
             if (!task.isSuccessful) {
                 task.exception?.let {
                     throw it
                 }
             }
+            // Para obtener la url
             imagenRef.downloadUrl
         }.addOnCompleteListener { task ->
 
@@ -211,7 +222,6 @@ class ComercianteActivity : AppCompatActivity() {
                 imagenURL = task.result.toString()
 
                 guardarFormulario()
-
             } else {
                 // Handle failures
                 Toast.makeText(applicationContext, "No se pudo subir la imagen", Toast.LENGTH_LONG).show()
@@ -249,7 +259,7 @@ class ComercianteActivity : AppCompatActivity() {
                 // Se subio la coleccion, detengo el progress bar
                 llProgressBar.visibility = View.GONE
 
-                Toast.makeText(applicationContext, "Sus datos se guardaron con exito", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Sus datos se guardaron con éxito", Toast.LENGTH_LONG).show()
 
                 // Cierro la sesion de usuario actual
                 AuthUI.getInstance()
@@ -277,15 +287,18 @@ class ComercianteActivity : AppCompatActivity() {
 
         // Activity AUTH
         if (requestCode == RC_SIGN_IN) {
+
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
+
                 // Successfully signed in
                 usuario = FirebaseAuth.getInstance().currentUser!!
 
-                toolbar.title = usuario.displayName?.let { createTitle(it) }
+                toolbar.title = usuario.displayName?.let { Funciones.createTitle(it) }
             }
             else {
+
                 // Sign in failed.
                 // Cierro la sesion de usuario actual
                 AuthUI.getInstance()
@@ -293,22 +306,7 @@ class ComercianteActivity : AppCompatActivity() {
                     .addOnCompleteListener {
                         this.finish()
                     }
-
-                //this.finish()
             }
         }
-
-
-    }
-
-    private fun createTitle(nombre: String): String {
-        val aux = nombre.split(" ")
-        var titulo = ""
-
-        for (palabra in aux) {
-            titulo += palabra.capitalize() + " "
-        }
-
-        return titulo
     }
 }

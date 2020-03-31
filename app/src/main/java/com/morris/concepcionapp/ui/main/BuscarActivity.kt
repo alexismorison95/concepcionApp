@@ -10,9 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import com.morris.concepcionapp.Funciones
 import com.morris.concepcionapp.Negocio
 import com.morris.concepcionapp.R
 import kotlinx.android.synthetic.main.activity_buscar.*
+import java.nio.channels.Selector
 import java.text.Normalizer
 
 
@@ -23,21 +25,22 @@ class BuscarActivity : AppCompatActivity() {
     private lateinit var llProgressBar: LinearLayout
     private lateinit var textView: TextView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar)
 
         // Catch parametros
-        val busqueda = intent.getSerializableExtra("busqueda").toString()
-        val tipoBusqueda = intent.getSerializableExtra("tipo").toString()
+        val busqueda = intent.getSerializableExtra("busqueda")
+        val tipoBusqueda = intent.getSerializableExtra("tipo")
 
-        setViews(busqueda)
+        setViews(busqueda!!.toString())
 
-        // Busco en la bbdd
-        getNegocios(busqueda, tipoBusqueda)
+        getNegocios(busqueda.toString(), tipoBusqueda!!.toString())
     }
 
     private fun setViews(busqueda: String) {
+
         // Toolbar
         toolbar = findViewById(R.id.toolbarBuscar)
         toolbar.title = busqueda.capitalize()
@@ -59,18 +62,20 @@ class BuscarActivity : AppCompatActivity() {
 
         // Validacion lista
         if (negocios.isEmpty()) {
+
             recycle_list_view.visibility = View.GONE
             buscarNotFound.visibility = View.VISIBLE
         }
         else {
+
             recycle_list_view.visibility = View.VISIBLE
             buscarNotFound.visibility = View.GONE
-        }
 
-        // Cargo las vistas en el recyclerView
-        recycle_list_view.apply {
-            layoutManager = LinearLayoutManager(this.context)
-            adapter = NegocioAdapter(negocios)
+            // Cargo las vistas en el recyclerView
+            recycle_list_view.apply {
+                layoutManager = LinearLayoutManager(this.context)
+                adapter = NegocioAdapter(negocios)
+            }
         }
     }
 
@@ -85,77 +90,89 @@ class BuscarActivity : AppCompatActivity() {
         val negociosRef = db.collection("negocios")
 
         if (tipoBusqueda == "todo") {
+
             // Busqueda por lo que sea
-            negociosRef.whereEqualTo("verificado", true)
-                .get()
-                .addOnSuccessListener { documents ->
-                    var negocios = mutableListOf<Negocio>()
-
-                    for (doc in documents) {
-                        negocios.add(doc.toObject(Negocio::class.java))
-                    }
-
-                    var negociosFiltrados = filtrarBusqueda(negocios, busqueda)
-
-                    loadRecyclerViews(negociosFiltrados)
-                }
-                .addOnFailureListener {
-                    showError()
-                }
-        }
-        else {
-            // busqueda por categoria
-            negociosRef.whereEqualTo("rubro", busqueda.toLowerCase())
+            negociosRef
                 .whereEqualTo("verificado", true)
                 .get()
                 .addOnSuccessListener { documents ->
 
-                    var negocios = mutableListOf<Negocio>()
+                    val negocios = mutableListOf<Negocio>()
 
                     for (doc in documents) {
                         negocios.add(doc.toObject(Negocio::class.java))
                     }
 
+                    val negociosFiltrados = filtrarBusqueda(negocios, busqueda)
+
+                    loadRecyclerViews(negociosFiltrados)
+                }
+                .addOnFailureListener {
+
+                    showError()
+                }
+        }
+        else {
+
+            // busqueda por categoria
+            negociosRef
+                .whereEqualTo("rubro", busqueda.toLowerCase())
+                .whereEqualTo("verificado", true)
+                .get()
+                .addOnSuccessListener { documents ->
+
+                    val negocios = mutableListOf<Negocio>()
+
+                    for (doc in documents) {
+                        negocios.add(doc.toObject(Negocio::class.java))
+                    }
+
+                    negocios.sortBy { it.nombre }
+
                     loadRecyclerViews(negocios)
                 }
                 .addOnFailureListener {
+
                     showError()
                 }
         }
     }
 
     private fun filtrarBusqueda(negocios: MutableList<Negocio>, busqueda: String): MutableList<Negocio> {
-        var res = mutableListOf<Negocio>()
+
+        val res = mutableListOf<Negocio>()
 
         // Ahora itero para cada atributo que se puede buscar
         for (neg in negocios) {
+
             // Nombre
-            if (quitarTildes(neg.nombre!!).contains(busqueda)) { res.add(neg) }
+            if (Funciones.quitarTildes(neg.nombre!!).contains(busqueda)) {
+                if (!res.contains(neg)) { res.add(neg) }
+            }
+
             // Horario
-            if (quitarTildes(neg.horario!!).contains(busqueda)) { res.add(neg) }
+            if (Funciones.quitarTildes(neg.horario!!).contains(busqueda)) {
+                if (!res.contains(neg)) { res.add(neg) }
+            }
+
             // Descripcion
-            if (quitarTildes(neg.descripcion!!).contains(busqueda)) { res.add(neg) }
+            if (Funciones.quitarTildes(neg.descripcion!!).contains(busqueda)) {
+                if (!res.contains(neg)) { res.add(neg) }
+            }
+
             // Rubro
-            if (quitarTildes(neg.rubro!!).contains(busqueda)) { res.add(neg) }
+            if (Funciones.quitarTildes(neg.rubro!!).contains(busqueda)) {
+                if (!res.contains(neg)) { res.add(neg) }
+            }
         }
 
-        // Quito los objetos repetidos
-        res.distinctBy { Pair(it.nombre, it.imagenURL) }
+        res.sortBy { it.nombre }
 
         return res
     }
 
-    private fun quitarTildes(palabra: String): String {
-        val REGEX_UNACCENT = "\\p{InCombiningDiacriticalMarks}+".toRegex()
-
-        val temp = Normalizer.normalize(palabra, Normalizer.Form.NFD)
-        val sinTildes = REGEX_UNACCENT.replace(temp, "")
-        Log.d("Sin tilde", sinTildes)
-
-        return sinTildes
-    }
-
     private fun showError() {
+
         llProgressBar.visibility = View.GONE
 
         textView.text = "Error del servidor"

@@ -11,19 +11,32 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/negocio_image"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/colorGrisClaro"/>
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/negocio_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorGrisClaro"/>
+
+            <ProgressBar
+                android:id="@+id/progressBarNegocio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:theme="@style/AppThemeInicio"/>
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/negocio_nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de negocio"
+            android:text=""
             android:textSize="25sp"
             android:textColor="@color/colorBlack"
             android:textStyle="bold"/>
@@ -35,7 +48,7 @@
             android:maxLines="10"
             android:layout_marginBottom="5dp"
             android:textSize="16sp"
-            android:text="Descripcion"/>
+            android:text=""/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +67,7 @@
                 android:id="@+id/negocio_direccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tibiletti 478, Concepcion del Uruguay, Entre Rios"
+                android:text=""
                 android:textColorLink="@color/colorText"
                 android:layout_gravity="center_vertical"
                 android:textSize="16sp"/>
@@ -78,7 +91,7 @@
                 android:id="@+id/negocio_whatsapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+543445402211"
+                android:text=""
                 android:textColorLink="@color/colorText"
                 android:layout_gravity="center_vertical"
                 android:textSize="16sp"/>
@@ -102,7 +115,7 @@
                 android:id="@+id/negocio_telefono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="03445-15402211"
+                android:text=""
                 android:autoLink="phone"
                 android:textColorLink="@color/colorText"
                 android:layout_gravity="center_vertical"
@@ -126,7 +139,7 @@
                 android:id="@+id/negocio_horarios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="18hs a 23hs"
+                android:text=""
                 android:layout_gravity="center_vertical"
                 android:textSize="16sp"/>
 

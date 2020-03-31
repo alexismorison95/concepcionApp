@@ -34,8 +34,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
             if (R.id.button_comerciante == item.itemId) {
-                // Ejecuto codigo
+
                 val intent = Intent(this, ComercianteActivity::class.java)
 
                 startActivity(intent)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configurarTabLayout() {
+
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
 
         val viewPager = findViewById<ViewPager>(R.id.viewpager_main)

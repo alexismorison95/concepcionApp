@@ -26,35 +26,37 @@ import kotlinx.android.synthetic.*
  */
 class InicioFragment : Fragment(), View.OnClickListener {
 
-    private var buscarInput: TextInputEditText? = null
-    private var buttonAlmacen: Button? = null
-    private var buttonCarniceria: Button? = null
-    private var buttonFarmacia: Button? = null
-    private var buttonFerreteria: Button? = null
-    private var buttonGastronomia: Button? = null
-    private var buttonLimpieza: Button? = null
-    private var buttonOtro: Button? = null
-    private var buttonPanaderia: Button? = null
-    private var buttonVerduleria: Button? = null
+    private lateinit var buscarInput: TextInputEditText
+    private lateinit var buttonAlmacen: Button
+    private lateinit var buttonCarniceria: Button
+    private lateinit var buttonFarmacia: Button
+    private lateinit var buttonFerreteria: Button
+    private lateinit var buttonGastronomia: Button
+    private lateinit var buttonLimpieza: Button
+    private lateinit var buttonOtro: Button
+    private lateinit var buttonPanaderia: Button
+    private lateinit var buttonVerduleria: Button
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         // Set theme
         context?.theme?.applyStyle(R.style.AppThemeInicio, true)
 
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_inicio, container, false)
 
-        // Inicio las vistas
-        initViews(view)
+        setViews(view)
 
-        // Seteo los eventos de click
         setListeners()
 
         return view
     }
 
-    private fun initViews(view: View) {
+    private fun setViews(view: View) {
+
         buscarInput = view.findViewById(R.id.buscar_input)
+
         buttonAlmacen = view.findViewById(R.id.button_almacen)
         buttonCarniceria = view.findViewById(R.id.button_carniceria)
         buttonFarmacia = view.findViewById(R.id.button_farmacia)
@@ -67,45 +69,50 @@ class InicioFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setListeners() {
-        buttonAlmacen!!.setOnClickListener(this)
-        buttonCarniceria!!.setOnClickListener(this)
-        buttonFarmacia!!.setOnClickListener(this)
-        buttonFerreteria!!.setOnClickListener(this)
-        buttonGastronomia!!.setOnClickListener(this)
-        buttonLimpieza!!.setOnClickListener(this)
-        buttonOtro!!.setOnClickListener(this)
-        buttonPanaderia!!.setOnClickListener(this)
-        buttonVerduleria!!.setOnClickListener(this)
 
-        buscarInput?.setOnEditorActionListener { _, action, _ ->
+        buttonAlmacen.setOnClickListener(this)
+        buttonCarniceria.setOnClickListener(this)
+        buttonFarmacia.setOnClickListener(this)
+        buttonFerreteria.setOnClickListener(this)
+        buttonGastronomia.setOnClickListener(this)
+        buttonLimpieza.setOnClickListener(this)
+        buttonOtro.setOnClickListener(this)
+        buttonPanaderia.setOnClickListener(this)
+        buttonVerduleria.setOnClickListener(this)
+
+        buscarInput.setOnEditorActionListener { _, action, _ ->
+
             var handled = false
+
             if (action == EditorInfo.IME_ACTION_SEARCH) {
-                // Aca ejecuto el metodo necesario
+
                 buscarTextInput()
                 handled = true
             }
+
             handled
         }
     }
 
     // Cuando busco por medio de una categoria
     override fun onClick(v: View?) {
-        var intent = Intent(activity, BuscarActivity::class.java)
 
-        val button: Button = v!!.findViewById<Button>(v.id)
+        val intent = Intent(activity, BuscarActivity::class.java)
 
-        intent.putExtra("busqueda", button.text.toString())
-        intent.putExtra("tipo", button.text.toString())
+        val buttonSeleccionado: Button = v!!.findViewById(v.id)
+
+        intent.putExtra("busqueda", buttonSeleccionado.text.toString())
+        intent.putExtra("tipo", buttonSeleccionado.text.toString())
 
         startActivity(intent)
     }
 
     // Cuando busco por medio del TextEdit
     private fun buscarTextInput() {
-        var busqueda: String = buscarInput?.text.toString()
 
-        // Si escribio algo
-        if (!busqueda.isNullOrBlank()) {
+        val busqueda: String = buscarInput.text.toString()
+
+        if (!busqueda.isBlank()) {
 
             val intent = Intent(activity, BuscarActivity::class.java)
 
@@ -113,7 +120,6 @@ class InicioFragment : Fragment(), View.OnClickListener {
             intent.putExtra("tipo", "todo")
 
             startActivity(intent)
-
         }
     }
 
