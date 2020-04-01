@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    card_view:cardCornerRadius="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingBottom="18dp">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
             <ImageView
                 android:id="@+id/negocio_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/colorGrisClaro"/>
+                android:background="@color/colorDivider" />
 
             <ProgressBar
                 android:id="@+id/progressBarNegocio"
@@ -37,31 +40,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="25sp"
-            android:textColor="@color/colorBlack"
+            android:textSize="22sp"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/colorTextPrimary"
             android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/negocio_descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="10"
-            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="16dp"
             android:textSize="16sp"
-            android:text=""/>
+            android:text="" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="20dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_google_maps"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="20dp"/>
 
             <TextView
                 android:id="@+id/negocio_direccion"
@@ -78,14 +90,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="20dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_whatsapp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="20dp"/>
 
             <TextView
                 android:id="@+id/negocio_whatsapp"
@@ -102,14 +115,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="20dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_call_black_24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="20dp"/>
 
             <TextView
                 android:id="@+id/negocio_telefono"
@@ -117,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:autoLink="phone"
-                android:textColorLink="@color/colorText"
+                android:textColorLink="@color/colorTextSecondary"
                 android:layout_gravity="center_vertical"
                 android:textSize="16sp"/>
 
@@ -126,14 +140,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_access_time_black_24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="20dp"/>
 
             <TextView
                 android:id="@+id/negocio_horarios"
@@ -146,12 +161,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary"
-        android:layout_gravity="bottom"/>
 
 </androidx.cardview.widget.CardView>
 

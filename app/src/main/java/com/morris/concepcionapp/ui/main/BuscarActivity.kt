@@ -25,25 +25,28 @@ class BuscarActivity : AppCompatActivity() {
     private lateinit var llProgressBar: LinearLayout
     private lateinit var textView: TextView
 
+    private var busqueda: String? = null
+    private var tipoBusqueda: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar)
 
         // Catch parametros
-        val busqueda = intent.getSerializableExtra("busqueda")
-        val tipoBusqueda = intent.getSerializableExtra("tipo")
+        busqueda = intent.getStringExtra("busqueda")
+        tipoBusqueda = intent.getStringExtra("tipo")
 
-        setViews(busqueda!!.toString())
+        setViews()
 
-        getNegocios(busqueda.toString(), tipoBusqueda!!.toString())
+        getNegocios()
     }
 
-    private fun setViews(busqueda: String) {
+    private fun setViews() {
 
         // Toolbar
         toolbar = findViewById(R.id.toolbarBuscar)
-        toolbar.title = busqueda.capitalize()
+        toolbar.title = busqueda?.capitalize()
         toolbar.setNavigationOnClickListener { this.finish() }
 
         // LinearLayout Not Found
@@ -79,7 +82,7 @@ class BuscarActivity : AppCompatActivity() {
         }
     }
 
-    private fun getNegocios(busqueda: String, tipoBusqueda: String) {
+    private fun getNegocios() {
 
         // Muestro el progress bar
         llProgressBar.visibility = View.VISIBLE
@@ -103,9 +106,7 @@ class BuscarActivity : AppCompatActivity() {
                         negocios.add(doc.toObject(Negocio::class.java))
                     }
 
-                    val negociosFiltrados = filtrarBusqueda(negocios, busqueda)
-
-                    loadRecyclerViews(negociosFiltrados)
+                    loadRecyclerViews( filtrarBusqueda(negocios) )
                 }
                 .addOnFailureListener {
 
@@ -116,7 +117,7 @@ class BuscarActivity : AppCompatActivity() {
 
             // busqueda por categoria
             negociosRef
-                .whereEqualTo("rubro", busqueda.toLowerCase())
+                .whereEqualTo("rubro", busqueda!!.toLowerCase())
                 .whereEqualTo("verificado", true)
                 .get()
                 .addOnSuccessListener { documents ->
@@ -138,7 +139,7 @@ class BuscarActivity : AppCompatActivity() {
         }
     }
 
-    private fun filtrarBusqueda(negocios: MutableList<Negocio>, busqueda: String): MutableList<Negocio> {
+    private fun filtrarBusqueda(negocios: MutableList<Negocio>): MutableList<Negocio> {
 
         val res = mutableListOf<Negocio>()
 
@@ -146,22 +147,22 @@ class BuscarActivity : AppCompatActivity() {
         for (neg in negocios) {
 
             // Nombre
-            if (Funciones.quitarTildes(neg.nombre!!).contains(busqueda)) {
+            if (Funciones.quitarTildes(neg.nombre!!).contains(busqueda!!)) {
                 if (!res.contains(neg)) { res.add(neg) }
             }
 
             // Horario
-            if (Funciones.quitarTildes(neg.horario!!).contains(busqueda)) {
+            if (Funciones.quitarTildes(neg.horario!!).contains(busqueda!!)) {
                 if (!res.contains(neg)) { res.add(neg) }
             }
 
             // Descripcion
-            if (Funciones.quitarTildes(neg.descripcion!!).contains(busqueda)) {
+            if (Funciones.quitarTildes(neg.descripcion!!).contains(busqueda!!)) {
                 if (!res.contains(neg)) { res.add(neg) }
             }
 
             // Rubro
-            if (Funciones.quitarTildes(neg.rubro!!).contains(busqueda)) {
+            if (Funciones.quitarTildes(neg.rubro!!).contains(busqueda!!)) {
                 if (!res.contains(neg)) { res.add(neg) }
             }
         }

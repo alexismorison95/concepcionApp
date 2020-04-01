@@ -62,7 +62,7 @@ class ComercianteActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         // Theme
-        setTheme(R.style.AppThemeInicio)
+        setTheme(R.style.AppThemeComerciante)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comerciante)
@@ -72,6 +72,15 @@ class ComercianteActivity : AppCompatActivity() {
         authGoogle()
 
         setListeners()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // Cierro la sesion de usuario actual
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener { }
     }
 
     private fun authGoogle() {
@@ -140,7 +149,6 @@ class ComercianteActivity : AppCompatActivity() {
                 validarFormulario()
             }
             catch (e: Exception) {
-                Log.d("Formulario error", e.message)
                 Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
             }
         }
@@ -159,15 +167,15 @@ class ComercianteActivity : AppCompatActivity() {
     private fun validarFormulario() {
 
         // Validaciones
-        if (!radioButtonCategoria!!.isChecked &&
-            !radioButtonPersonal!!.isChecked  &&
-            formularioCuit.text.isNullOrBlank() &&
-            formularioNombre.text.isNullOrBlank() &&
-            formularioDireccion.text.isNullOrBlank() &&
-            formularioHorario.text.isNullOrBlank() &&
-            formularioMail.text.isNullOrBlank() &&
-            formularioNumero.text.isNullOrBlank() &&
-            formularioWhatsapp.text.isNullOrBlank() &&
+        if (!radioButtonCategoria?.isChecked!! ||
+            !radioButtonPersonal?.isChecked!! ||
+            formularioCuit.text.isNullOrBlank() ||
+            formularioNombre.text.isNullOrBlank() ||
+            formularioDireccion.text.isNullOrBlank() ||
+            formularioHorario.text.isNullOrBlank() ||
+            formularioMail.text.isNullOrBlank() ||
+            formularioNumero.text.isNullOrBlank() ||
+            formularioWhatsapp.text.isNullOrBlank() ||
             formularioDescripcion.text.isNullOrBlank()
         ) {
             Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
@@ -184,7 +192,7 @@ class ComercianteActivity : AppCompatActivity() {
         llProgressBar.visibility = View.VISIBLE
 
         // Me conecto con firebase
-        var storage = FirebaseStorage.getInstance("gs://concepcionapp-803a6.appspot.com")
+        val storage = FirebaseStorage.getInstance("gs://concepcionapp-803a6.appspot.com")
 
         // Create a storage reference from our app
         val storageRef = storage.reference

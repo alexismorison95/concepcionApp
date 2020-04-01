@@ -5,7 +5,7 @@
 
     <string name="not_found">No se encontraron resultados</string>
 
-    <string name="buscar">Buscar por comida, rubro, local, etc.</string>
+    <string name="buscar">Buscar por comida, rubro, local, dia, etc.</string>
     <string name="inicio_o_categoria">O elegir una categoría</string>
 
     <string name="almacen">almacén</string>
@@ -24,7 +24,7 @@
     <string name="nombre_text_view">Indique el nombre comercial del comercio.</string>
     <string name="nombre">Nombre</string>
     <string name="descripcion_text_view">Indique una descripción del comercio.</string>
-    <string name="descripcion">Descripcion</string>
+    <string name="descripcion">Descripción</string>
     <string name="a_que_se_dedica">¿A qué se dedica el comercio? Indique la opción que corresponda.</string>
     <string name="su_empresa_realiza">¿Su empresa realiza actualmente servicios de delivery?</string>
     <string name="si_propio">Sí, cuento con personal propio</string>

@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
             android:background="@color/colorPrimaryDark"
-            app:titleTextColor="@color/colorAccent"
+            app:titleTextColor="@color/colorText"
             app:navigationIcon="?attr/homeAsUpIndicator"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,25 +38,26 @@
                 android:layout_height="wrap_content"
                 android:text="@string/formulario_explicacion"
                 android:textSize="20sp"
-                android:layout_marginBottom="16dp"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_marginBottom="25dp"
                 android:textStyle="bold"/>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cuit_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_cuit"
@@ -71,22 +72,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_nombre"
@@ -100,22 +101,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/descripcion_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_descripcion"
@@ -128,25 +129,25 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/a_que_se_dedica"
                 android:paddingBottom="6dp"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <RadioGroup
                 android:id="@+id/radio_group_categoria"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <RadioButton
                     android:id="@+id/rgc_almacen"
@@ -204,25 +205,25 @@
 
             </RadioGroup>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/su_empresa_realiza"
                 android:paddingBottom="6dp"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <RadioGroup
                 android:id="@+id/radio_group_personal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <RadioButton
                     android:id="@+id/rgp_si_propio"
@@ -244,22 +245,22 @@
 
             </RadioGroup>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/en_que_horarios"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_horarios"
@@ -273,22 +274,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/numero_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_numero"
@@ -302,22 +303,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/whatsapp_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_whatsapp"
@@ -331,22 +332,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mail_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_mail"
@@ -360,22 +361,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/direccion_text_view"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/formulario_direccion"
@@ -388,29 +389,29 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/foto_text_view"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorTextPrimary"
                 android:paddingBottom="8dp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="25dp">
 
                 <ImageView
                     android:id="@+id/foto_comerciante"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:background="@color/colorGrisClaro"
+                    android:background="@color/colorDivider"
                     android:scaleType="centerCrop"/>
 
                 <Button
@@ -418,23 +419,26 @@
                     android:layout_width="47dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
+                    android:theme="@style/AppTheme"
                     android:drawableEnd="@drawable/ic_image_black_24dp" />
 
             </FrameLayout>
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorGrisClaro"
-                android:layout_marginBottom="16dp"/>
+                android:background="@color/colorDivider"
+                android:layout_marginBottom="25dp"/>
 
             <Button
                 android:id="@+id/btn_guardar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:text="@string/guardar"
                 android:textSize="20sp"
-                android:textColor="@color/colorAccent"
+                android:paddingVertical="18dp"
+                android:theme="@style/AppTheme"
+                android:textColor="@color/colorText"
                 android:layout_marginBottom="10dp"/>
 
         </LinearLayout>

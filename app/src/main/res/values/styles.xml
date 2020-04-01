@@ -3,22 +3,32 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorText</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
     </style>
 
     <style name="AppThemeInicio" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimary</item>
-        <item name="colorControlNormal">@color/colorText</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorBlack</item>
-<!--        <item name="android:textSize">20sp</item>-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorTextSecondary</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="colorControlHighlight">@color/colorButtonInicioSelect</item>
+    </style>
 
-        <item name="colorButtonNormal">@color/colorPrimary</item>
+    <style name="AppThemeComerciante" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorTextSecondary</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimaryDark</item>
     </style>
 
@@ -30,7 +40,7 @@
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <!-- Customize color of navigation drawer icon and back arrow -->
-        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorText</item>
     </style>
 
 </resources>

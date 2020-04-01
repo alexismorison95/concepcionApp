@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryLight">#5EB8FF</color>
-    <color name="colorPrimaryDark">#186DB0</color>
-    <color name="colorAccent">#FFFFFF</color>
-    <color name="colorBlack">#000000</color>
-    <color name="colorText">#6A6A6A</color>
-    <color name="colorTransparent">#006A6A6A</color>
-    <color name="colorGrisClaro">#EFEFEF</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#448AFF</color>
+    <color name="colorBlack">#212121</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorButtonInicioSelect">#B6C5D1</color>
+
+<!--    <color name="colorTextOscuro">#5D5C5C</color>-->
+<!--    <color name="colorTextAzulado">#4F6271</color>-->
+<!--    <color name="colorTransparent">#006A6A6A</color>-->
+<!--    <color name="colorGrisClaro">#EFEFEF</color>-->
     <color name="colorSemiTransparent">#8F000000</color>
+<!--    <color name="colorGris">#C5C5C5</color>-->
+<!--    <color name="colorGrisAzulado">#B6C5D1</color>-->
 
 </resources>

@@ -27,8 +27,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="60dp"
         app:fabSize="mini"
-        android:scaleType="center"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:src="@drawable/ic_refresh_black_32dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

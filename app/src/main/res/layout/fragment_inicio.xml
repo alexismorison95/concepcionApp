@@ -15,11 +15,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="@dimen/paddingInicio">
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/buscar_input"
@@ -29,7 +31,7 @@
                     android:imeOptions="actionSearch"
                     android:singleLine="true"
                     android:inputType="text"
-                    android:layout_marginBottom="@dimen/paddingInicio"
+                    android:layout_marginBottom="20dp"
                     android:focusedByDefault="false"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -40,133 +42,443 @@
                 android:text="@string/inicio_o_categoria"
                 android:textSize="15sp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/paddingInicio"
-                android:textColor="@color/colorText" />
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/colorTextSecondary" />
 
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp">
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button_almacen"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginHorizontal="25dp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="Emergencias"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_llamada_de_emergencia"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="Remises"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_coche"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginHorizontal="25dp"/>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_almacen"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_storefront_outline"-->
+<!--                    android:drawablePadding="30dp"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/almacen"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_almacen"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/almacen"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_carro"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_carniceria"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/carniceria"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_pollo"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_carniceria"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_sausage"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/carniceria"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_farmacia"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_medical_bag"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/farmacia"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_farmacia"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/farmacia"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_doctor"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_ferreteria"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_hammer_screwdriver"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/ferreteria"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_ferreteria"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/ferreteria"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_llave_inglesa"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_gastronomia"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/gastronomia"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_pizza2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_gastronomia"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_pizza"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/gastronomia"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_limpieza"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/limpieza"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_escoba"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_limpieza"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_spray_bottle"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/limpieza"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_otro"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/otro"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_centro_comercial"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_otro"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_basket"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/otro"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/button_panaderia"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/panaderia"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_pan_de_molde"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
+
+                </FrameLayout>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_panaderia"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_bread_slice"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/panaderia"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/colorGris"/>-->
+
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_storefront_outline"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/almacen"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
+                    android:layout_marginBottom="30dp">
 
-                <Button
-                    android:id="@+id/button_carniceria"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_sausage"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/carniceria"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
+                    <Button
+                        android:id="@+id/button_verduleria"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="?android:selectableItemBackground"
+                        android:text="@string/verduleria"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textAlignment="viewStart"
+                        android:paddingStart="87dp"/>
 
-                <Button
-                    android:id="@+id/button_farmacia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_medical_bag"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/farmacia"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_vegano"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"/>
 
-                <Button
-                    android:id="@+id/button_ferreteria"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_hammer_screwdriver"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/ferreteria"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
+                </FrameLayout>
 
-                <Button
-                    android:id="@+id/button_gastronomia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_pizza"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/gastronomia"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
-
-                <Button
-                    android:id="@+id/button_limpieza"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_spray_bottle"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/limpieza"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
-
-                <Button
-                    android:id="@+id/button_otro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_basket"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/otro"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
-
-                <Button
-                    android:id="@+id/button_panaderia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_bread_slice"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/panaderia"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp" />
-
-                <Button
-                    android:id="@+id/button_verduleria"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorTransparent"
-                    android:drawableStart="@drawable/ic_food_apple"
-                    android:drawablePadding="@dimen/paddingInicio"
-                    android:gravity="start|center"
-                    android:text="@string/verduleria"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen20sp"
-                    android:layout_marginBottom="30dp"/>
+<!--                <Button-->
+<!--                    android:id="@+id/button_verduleria"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="?android:selectableItemBackground"-->
+<!--                    android:drawableStart="@drawable/ic_food_apple"-->
+<!--                    android:drawablePadding="@dimen/paddingInicio"-->
+<!--                    android:paddingStart="35dp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:text="@string/verduleria"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="@dimen/dimen20sp"-->
+<!--                    android:layout_marginBottom="30dp"/>-->
 
             </LinearLayout>
 
