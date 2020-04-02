@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        style="?attr/progressBarStyle" />
+        android:theme="@style/AppThemeInicio" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnReload"
@@ -27,7 +27,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="60dp"
         app:fabSize="mini"
-        android:background="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorPrimaryDark"
         android:src="@drawable/ic_refresh_black_32dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

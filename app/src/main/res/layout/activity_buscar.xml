@@ -18,7 +18,7 @@
             android:theme="@style/ToolbarTheme"
             android:background="@color/colorPrimaryDark"
             app:titleTextColor="@color/colorText"
-            app:navigationIcon="?attr/homeAsUpIndicator"/>
+            app:navigationIcon="?attr/homeAsUpIndicator" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

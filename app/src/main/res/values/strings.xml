@@ -5,10 +5,10 @@
 
     <string name="not_found">No se encontraron resultados</string>
 
-    <string name="buscar">Buscar por comida, rubro, local, dia, etc.</string>
+    <string name="buscar">Buscar por comida, local, dia...</string>
     <string name="inicio_o_categoria">O elegir una categoría</string>
 
-    <string name="almacen">almacén</string>
+    <string name="almacen">Almacén</string>
     <string name="carniceria">Carnicería</string>
     <string name="farmacia">Farmacia</string>
     <string name="ferreteria">Ferretería</string>
@@ -18,28 +18,29 @@
     <string name="panaderia">Panadería</string>
     <string name="verduleria">Verdulería</string>
 
-    <string name="formulario_explicacion">Si tenes un comercio que tiene delivery o lo estarás incorporando en los próximos días, completá este formulario para incluirlo en el sistema. Su negocio será visible una vez que un administrador verifique sus datos.</string>
-    <string name="cuit_text_view">Indique el CUIT del comercio.</string>
+    <string name="formulario_explicacion">Si tenes un comercio que tiene delivery o lo estarás incorporando en los próximos días, completá este formulario para incluirlo en el sistema.</string>
+    <string name="formulario_explicacion_adm">Su negocio será visible una vez que un administrador verifique sus datos.</string>
+    <string name="cuit_text_view">CUIT del comercio</string>
     <string name="cuit">CUIT</string>
-    <string name="nombre_text_view">Indique el nombre comercial del comercio.</string>
+    <string name="nombre_text_view">Nombre del comercio</string>
     <string name="nombre">Nombre</string>
-    <string name="descripcion_text_view">Indique una descripción del comercio.</string>
+    <string name="descripcion_text_view">Descripción del comercio</string>
     <string name="descripcion">Descripción</string>
-    <string name="a_que_se_dedica">¿A qué se dedica el comercio? Indique la opción que corresponda.</string>
-    <string name="su_empresa_realiza">¿Su empresa realiza actualmente servicios de delivery?</string>
+    <string name="a_que_se_dedica">¿A qué se dedica el comercio?</string>
+    <string name="su_empresa_realiza">¿Realiza actualmente delivery?</string>
     <string name="si_propio">Sí, cuento con personal propio</string>
     <string name="si_terceros">Sí, tercerizo el servicio en remiserías u otros actores</string>
     <string name="no_pronto">No, pero lo tendré pronto</string>
     <string name="en_que_horarios">¿En qué horarios el comercio realiza pedidos de delivery?</string>
-    <string name="horarios">Horarios</string>
+    <string name="horarios">Horarios del comercio</string>
     <string name="numero_text_view">Indique el número de teléfono del comercio.</string>
-    <string name="numero">Número</string>
+    <string name="numero">Número del comercio</string>
     <string name="whatsapp_text_view">Indique el número de WhatsApp del comercio.</string>
-    <string name="whatsapp">WhatsApp</string>
+    <string name="whatsapp">WhatsApp del comercio</string>
     <string name="mail_text_view">Indique un mail de contacto del comercio.</string>
-    <string name="mail">Mail</string>
+    <string name="mail">Mail para comunicarse</string>
     <string name="direccion_text_view">Indique la dirección del comercio.</string>
-    <string name="direccion">Dirección</string>
+    <string name="direccion">Dirección del comercio</string>
     <string name="foto_text_view">Cargar una foto del comercio.</string>
     <string name="guardar">Guardar</string>
 </resources>

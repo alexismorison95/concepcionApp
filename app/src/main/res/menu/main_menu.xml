@@ -5,7 +5,15 @@
 
     <item
         android:id="@+id/button_comerciante"
-        android:title="Sos comerciante?">
+        android:title="Sos comerciante?"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:id="@+id/button_info"
+        android:title="Info. de la aplicación"
+        app:showAsAction="never">
     </item>
 
 </menu>

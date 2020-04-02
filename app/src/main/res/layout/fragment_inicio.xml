@@ -21,7 +21,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp">
+                android:layout_marginHorizontal="30dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/buscar_input"
@@ -36,14 +37,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/inicio_o_categoria"
-                android:textSize="15sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
-                android:textColor="@color/colorTextSecondary" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/inicio_o_categoria"-->
+<!--                android:textSize="15sp"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:textColor="@color/colorTextSecondary" />-->
 
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
@@ -54,8 +55,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorDivider"
-                    android:layout_marginHorizontal="25dp"/>
+                    android:background="@color/colorDivider"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -69,7 +69,8 @@
                         android:textSize="20sp"
                         android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -90,9 +91,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="Remises"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -106,8 +108,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorDivider"
-                    android:layout_marginHorizontal="25dp"/>
+                    android:background="@color/colorDivider"/>
 
 <!--                <Button-->
 <!--                    android:id="@+id/button_almacen"-->
@@ -133,9 +134,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/almacen"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -157,9 +159,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/carniceria"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -212,9 +215,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/farmacia"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -255,9 +259,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/ferreteria"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -284,9 +289,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/gastronomia"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -326,9 +332,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/limpieza"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -368,9 +375,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/otro"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -410,9 +418,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/panaderia"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -453,9 +462,10 @@
                         android:background="?android:selectableItemBackground"
                         android:text="@string/verduleria"
                         android:textSize="20sp"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/colorPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"/>
+                        android:paddingStart="87dp"
+                        android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"

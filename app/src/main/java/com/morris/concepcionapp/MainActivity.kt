@@ -35,14 +35,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-            if (R.id.button_comerciante == item.itemId) {
+        return when (item.itemId) {
+
+            R.id.button_comerciante -> {
 
                 val intent = Intent(this, ComercianteActivity::class.java)
-
                 startActivity(intent)
-            }
 
-        return true
+                true
+            }
+            else -> {
+                // Intent info
+                true
+            }
+        }
     }
 
     private fun configurarTabLayout() {
