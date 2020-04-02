@@ -150,6 +150,7 @@ class ComercianteActivity : AppCompatActivity() {
             }
             catch (e: Exception) {
                 Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
+                llProgressBar.visibility = View.GONE
             }
         }
 

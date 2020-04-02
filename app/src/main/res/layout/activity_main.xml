@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/main_content"
-    android:fitsSystemWindows="true">
+    android:id="@+id/main_content">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -21,14 +20,12 @@
             android:layout_height="?attr/actionBarSize"
             app:title="@string/app_name"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.Light">
-
-        </androidx.appcompat.widget.Toolbar>
+            app:popupTheme="@style/Theme.AppCompat.Light"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

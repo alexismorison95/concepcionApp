@@ -37,15 +37,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/inicio_o_categoria"-->
-<!--                android:textSize="15sp"-->
-<!--                android:layout_gravity="center_horizontal"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:textColor="@color/colorTextSecondary" />-->
-
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
                 android:layout_width="match_parent"
@@ -110,19 +101,6 @@
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"/>
 
-<!--                <Button-->
-<!--                    android:id="@+id/button_almacen"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_storefront_outline"-->
-<!--                    android:drawablePadding="30dp"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/almacen"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -173,37 +151,6 @@
 
                 </FrameLayout>
 
-<!--                <Button-->
-<!--                    android:id="@+id/button_carniceria"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_sausage"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/carniceria"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/button_farmacia"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_medical_bag"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/farmacia"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -228,25 +175,6 @@
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
-
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/button_ferreteria"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_hammer_screwdriver"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/ferreteria"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -273,11 +201,6 @@
 
                 </FrameLayout>
 
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -302,24 +225,6 @@
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
-
-<!--                <Button-->
-<!--                    android:id="@+id/button_gastronomia"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_pizza"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/gastronomia"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -346,24 +251,6 @@
 
                 </FrameLayout>
 
-<!--                <Button-->
-<!--                    android:id="@+id/button_limpieza"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_spray_bottle"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/limpieza"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -388,24 +275,6 @@
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
-
-<!--                <Button-->
-<!--                    android:id="@+id/button_otro"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_basket"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/otro"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -432,24 +301,6 @@
 
                 </FrameLayout>
 
-<!--                <Button-->
-<!--                    android:id="@+id/button_panaderia"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_bread_slice"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/panaderia"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="@color/colorGris"/>-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -475,20 +326,6 @@
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
-
-<!--                <Button-->
-<!--                    android:id="@+id/button_verduleria"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="80dp"-->
-<!--                    android:background="?android:selectableItemBackground"-->
-<!--                    android:drawableStart="@drawable/ic_food_apple"-->
-<!--                    android:drawablePadding="@dimen/paddingInicio"-->
-<!--                    android:paddingStart="35dp"-->
-<!--                    android:gravity="start|center"-->
-<!--                    android:text="@string/verduleria"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="@dimen/dimen20sp"-->
-<!--                    android:layout_marginBottom="30dp"/>-->
 
             </LinearLayout>
 
