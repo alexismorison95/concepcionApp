@@ -35,9 +35,23 @@ class GeneralActivity : AppCompatActivity() {
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()
             }
-            else -> {
+            "ComercianteFragment" -> {
 
                 val fragment = ComercianteFragment()
+
+                fragmentTransaction.add(R.id.contenedor, fragment)
+                fragmentTransaction.commit()
+            }
+            "EmergenciasFragment" -> {
+
+                val fragment = EmergenciasFragment()
+
+                fragmentTransaction.add(R.id.contenedor, fragment)
+                fragmentTransaction.commit()
+            }
+            "RemiseriasFragment" -> {
+
+                val fragment = RemiseriasFragment()
 
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()

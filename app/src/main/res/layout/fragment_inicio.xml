@@ -48,6 +48,7 @@
                     android:layout_height="wrap_content">
 
                     <Button
+                        android:id="@+id/button_emergencias"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
@@ -72,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -80,6 +81,7 @@
                     android:layout_height="wrap_content">
 
                     <Button
+                        android:id="@+id/button_remiseria"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
@@ -135,7 +137,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -168,7 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -201,7 +203,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -234,7 +236,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -267,7 +269,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -300,7 +302,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -333,7 +335,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
@@ -366,7 +368,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
-                    android:layout_marginStart="87dp"
+                    android:layout_marginStart="76dp"
                     android:layout_marginEnd="30dp"/>
 
                 <FrameLayout

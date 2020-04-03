@@ -36,6 +36,8 @@ class InicioFragment : Fragment(), View.OnClickListener {
     private lateinit var buttonOtro: Button
     private lateinit var buttonPanaderia: Button
     private lateinit var buttonVerduleria: Button
+    private lateinit var buttonEmergencias: Button
+    private lateinit var buttonRemiseria: Button
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,6 +68,9 @@ class InicioFragment : Fragment(), View.OnClickListener {
         buttonOtro = view.findViewById(R.id.button_otro)
         buttonPanaderia = view.findViewById(R.id.button_panaderia)
         buttonVerduleria = view.findViewById(R.id.button_verduleria)
+
+        buttonEmergencias = view.findViewById(R.id.button_emergencias)
+        buttonRemiseria = view.findViewById(R.id.button_remiseria)
     }
 
     private fun setListeners() {
@@ -79,6 +84,22 @@ class InicioFragment : Fragment(), View.OnClickListener {
         buttonOtro.setOnClickListener(this)
         buttonPanaderia.setOnClickListener(this)
         buttonVerduleria.setOnClickListener(this)
+
+        buttonEmergencias.setOnClickListener {
+
+            val intent = Intent(context, GeneralActivity::class.java)
+            intent.putExtra("FrangmentName", "EmergenciasFragment")
+
+            startActivity(intent)
+        }
+
+        buttonRemiseria.setOnClickListener {
+
+            val intent = Intent(context, GeneralActivity::class.java)
+            intent.putExtra("FrangmentName", "RemiseriasFragment")
+
+            startActivity(intent)
+        }
 
         buscarInput.setOnEditorActionListener { _, action, _ ->
 
