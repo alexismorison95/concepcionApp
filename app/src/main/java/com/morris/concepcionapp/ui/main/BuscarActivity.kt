@@ -45,7 +45,7 @@ class BuscarActivity : AppCompatActivity() {
     private fun setViews() {
 
         // Toolbar
-        toolbar = findViewById(R.id.toolbarBuscar)
+        toolbar = findViewById(R.id.toolbar)
         toolbar.title = busqueda?.capitalize()
         toolbar.setNavigationOnClickListener { this.finish() }
 

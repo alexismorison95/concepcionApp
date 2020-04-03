@@ -5,22 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.ComercianteActivity">
+    tools:context=".ui.main.ComercianteFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarComerciante"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ToolbarTheme"
-            android:background="@color/colorPrimaryDark"
-            app:titleTextColor="@color/colorText"
-            app:navigationIcon="?attr/homeAsUpIndicator"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    <include
+        layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"

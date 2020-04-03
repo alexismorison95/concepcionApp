@@ -30,49 +30,32 @@ class GeneralActivity : AppCompatActivity() {
 
             "InfoFragment" -> {
 
-                val fragment = InfoFragment()
+                val fragment = InfoFragment.newInstance()
 
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()
             }
             "ComercianteFragment" -> {
 
-                val fragment = ComercianteFragment()
+                val fragment = ComercianteFragment.newInstance()
 
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()
             }
             "EmergenciasFragment" -> {
 
-                val fragment = EmergenciasFragment()
+                val fragment = EmergenciasFragment.newInstance()
 
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()
             }
             "RemiseriasFragment" -> {
 
-                val fragment = RemiseriasFragment()
+                val fragment = RemiseriasFragment.newInstance()
 
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()
             }
         }
-
-//        if (paramFragment == "InfoFragment") {
-//
-//            val fragment = InfoFragment()
-//
-//            fragmentTransaction.add(R.id.contenedor, fragment)
-//            fragmentTransaction.commit()
-//        }
-//
-//        if (paramFragment == "ComercianteFragment") {
-//
-//            val fragment = ComercianteFragment()
-//
-//            fragmentTransaction.add(R.id.contenedor, fragment)
-//            fragmentTransaction.commit()
-//        }
-
     }
 }

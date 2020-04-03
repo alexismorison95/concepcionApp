@@ -109,7 +109,7 @@ class ComercianteFragment : Fragment() {
     private fun setViews(view: View) {
 
         // Toolbar
-        toolbar = view.findViewById(R.id.toolbarComerciante)
+        toolbar = view.findViewById(R.id.toolbar)
 
         // Progress Bar
         llProgressBar = view.findViewById(R.id.llProgrssBar)
