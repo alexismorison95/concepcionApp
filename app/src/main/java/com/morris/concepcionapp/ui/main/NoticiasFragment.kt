@@ -2,8 +2,10 @@ package com.morris.concepcionapp.ui.main
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,10 +18,12 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.get
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.api.Http
 
 import com.morris.concepcionapp.R
 import java.lang.Exception
 import java.net.HttpURLConnection
+import java.nio.file.DirectoryStream
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -35,8 +39,12 @@ class NoticiasFragment : Fragment() {
 
     private lateinit var webView: WebView
     private lateinit var progressBar: ProgressBar
-    private lateinit var btnReload: FloatingActionButton
-    private lateinit var urlMV: String
+
+    private lateinit var btnReload: Button
+    private lateinit var btnBack: Button
+    private lateinit var btnForward: Button
+
+    private lateinit var urlGoogle: String
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,80 +56,56 @@ class NoticiasFragment : Fragment() {
 
         setListeners()
 
-        loadPDF()
+        loadWebDefault()
 
         return view
     }
 
     private fun loadViews(view: View) {
 
+        btnReload = view.findViewById(R.id.btnReload)
+        btnBack = view.findViewById(R.id.btnBack)
+        btnForward = view.findViewById(R.id.btnForward)
+
         webView = view.findViewById(R.id.noticias_webView)
 
         progressBar = view.findViewById(R.id.progressBar)
-
-        btnReload = view.findViewById(R.id.btnReload)
     }
 
     private fun setListeners() {
 
         btnReload.setOnClickListener { webView.reload() }
-    }
 
-    private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        btnBack.setOnClickListener {
 
-        val formatter = SimpleDateFormat(format, locale)
+            if (webView.canGoBack()) {
 
-        return formatter.format(this)
-    }
-
-    private fun getUrlMV(): String {
-
-        val date = Calendar.getInstance().time
-
-        val hora = date.toString("HH").toInt()
-
-        val calendar = Calendar.getInstance()
-
-        if (hora in 2..18) {
-
-            // Vespertino dia anterior
-            calendar.add(Calendar.DAY_OF_YEAR, -1)
-
-            val fecha = calendar.time.toString("dd-MM-yy")
-
-            return "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-vespertino-covid-19.pdf"
+                webView.goBack()
+                progressBar.visibility = View.GONE
+            }
         }
-        else {
 
-            return if (hora < 2) {
+        btnForward.setOnClickListener {
 
-                // Matutino dia anterior
-                calendar.add(Calendar.DAY_OF_YEAR, -1)
-
-                val fecha = calendar.time.toString("dd-MM-yy")
-
-                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-matutino-covid-19.pdf"
-            } else {
-
-                // Matutino de hoy
-
-                val fecha = calendar.time.toString("dd-MM-yy")
-
-                "https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.argentina.gob.ar/sites/default/files/$fecha-reporte-matutino-covid-19.pdf"
+            if (webView.canGoForward()) {
+                
+                webView.goForward()
+                progressBar.visibility = View.GONE
             }
         }
     }
 
-    private fun loadPDF() {
+    private fun loadWebDefault() {
 
         webView.webViewClient = MyWebClient()
-        webView.settings.javaScriptEnabled = true // Necesito esto para que google muestre los controles del pdf
-        webView.settings.builtInZoomControls = true
-        webView.settings.displayZoomControls = false
+        webView.webChromeClient = MyChromeClient()
+        webView.settings.javaScriptEnabled = true
+//        webView.settings.builtInZoomControls = true
+//        webView.settings.displayZoomControls = false
 
-        urlMV = getUrlMV()
+        urlGoogle = "https://news.google.com/topstories?hl=es-419&gl=AR&ceid=AR:es-419"
 
-        webView.loadUrl(urlMV)
+        webView.loadUrl(urlGoogle)
     }
 
     // Nueva implementacion de WebClient para poner un progressBar
@@ -130,14 +114,6 @@ class NoticiasFragment : Fragment() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
 
             progressBar.visibility = View.VISIBLE
-
-            if (url == urlMV) {
-                view.loadUrl(url)
-            }
-            else {
-                Toast.makeText(view.context, "No está permitida la navegación", Toast.LENGTH_LONG).show()
-                view.loadUrl(urlMV)
-            }
 
             return true
         }
@@ -151,7 +127,22 @@ class NoticiasFragment : Fragment() {
         override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
             super.onReceivedError(view, request, error)
 
-            webView.loadUrl(urlMV)
+            webView.loadUrl(urlGoogle)
+        }
+    }
+
+    inner class MyChromeClient : WebChromeClient() {
+
+        override fun getDefaultVideoPoster(): Bitmap? {
+
+            return if (super.getDefaultVideoPoster() == null) {
+
+                BitmapFactory.decodeResource(context?.resources, R.drawable.ic_google_downasaur)
+            }
+            else {
+
+                super.getDefaultVideoPoster()
+            }
         }
     }
 
