@@ -42,8 +42,7 @@
             android:text=""
             android:textSize="22sp"
             android:paddingHorizontal="20dp"
-            android:textColor="@color/colorTextPrimary"
-            android:textStyle="bold"/>
+            android:textColor="@color/colorTextPrimary"/>
 
         <TextView
             android:id="@+id/negocio_descripcion"

@@ -21,7 +21,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
+                android:layout_marginHorizontal="26dp"
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -43,54 +43,58 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorDivider"/>
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="Emergencias"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
                         android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_llamada_de_emergencia"
+                        android:src="@drawable/ic_add_alert_black_24dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
-                        android:text="Remises"
-                        android:textSize="20sp"
+                        android:text="Remiseria"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
                         android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_coche"
+                        android:src="@drawable/ic_taxi2"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
@@ -108,23 +112,31 @@
                     <Button
                         android:id="@+id/button_almacen"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/almacen"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_carro"
+                        android:src="@drawable/ic_basket"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -133,23 +145,31 @@
                     <Button
                         android:id="@+id/button_carniceria"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/carniceria"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_pollo"
+                        android:src="@drawable/ic_sausage"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -158,23 +178,31 @@
                     <Button
                         android:id="@+id/button_farmacia"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/farmacia"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_doctor"
+                        android:src="@drawable/ic_medical_bag"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -183,23 +211,31 @@
                     <Button
                         android:id="@+id/button_ferreteria"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/ferreteria"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_llave_inglesa"
+                        android:src="@drawable/ic_hammer_screwdriver"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -208,23 +244,31 @@
                     <Button
                         android:id="@+id/button_gastronomia"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/gastronomia"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_pizza2"
+                        android:src="@drawable/ic_pizza"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -233,23 +277,31 @@
                     <Button
                         android:id="@+id/button_limpieza"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/limpieza"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_escoba"
+                        android:src="@drawable/ic_spray_bottle"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -258,23 +310,31 @@
                     <Button
                         android:id="@+id/button_otro"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/otro"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_centro_comercial"
+                        android:src="@drawable/ic_store"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -283,23 +343,31 @@
                     <Button
                         android:id="@+id/button_panaderia"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/panaderia"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_pan_de_molde"
+                        android:src="@drawable/ic_bread_slice"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 
                 </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="30dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -309,19 +377,20 @@
                     <Button
                         android:id="@+id/button_verduleria"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
                         android:text="@string/verduleria"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textBotonesInicio"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/colorTextPrimary"
                         android:textAlignment="viewStart"
-                        android:paddingStart="87dp"
+                        android:paddingStart="@dimen/textBotonesInicioPadding"
                         android:textAllCaps="false"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_vegano"
+                        android:src="@drawable/ic_food_apple"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
 

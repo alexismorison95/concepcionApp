@@ -5,7 +5,7 @@
 
     <string name="not_found">No se encontraron resultados</string>
 
-    <string name="buscar">Buscar por comida, local, dia...</string>
+    <string name="buscar">Comidas, locales, días...</string>
     <string name="inicio_o_categoria">O elegir una categoría</string>
 
     <string name="almacen">Almacén</string>
@@ -43,4 +43,7 @@
     <string name="direccion">Dirección del comercio</string>
     <string name="foto_text_view">Cargar una foto del comercio.</string>
     <string name="guardar">Guardar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

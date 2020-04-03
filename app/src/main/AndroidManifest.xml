@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_logo3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.ComercianteActivity"></activity>
+        <activity android:name=".ui.main.GeneralActivity"></activity>
+        <activity android:name=".ui.main.ComercianteActivity" />
         <activity android:name=".ui.main.BuscarActivity" />
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

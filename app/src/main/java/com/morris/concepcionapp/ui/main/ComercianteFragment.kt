@@ -4,13 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
@@ -21,14 +20,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.morris.concepcionapp.Funciones
 import com.morris.concepcionapp.Negocio
+
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
-import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-import java.util.*
-import kotlin.math.log
 
-class ComercianteActivity : AppCompatActivity() {
+
+class ComercianteFragment : Fragment() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var imageView: ImageView
@@ -59,19 +57,13 @@ class ComercianteActivity : AppCompatActivity() {
     private var radioButtonCategoria: RadioButton? = null
     private var radioButtonPersonal: RadioButton? = null
 
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         // Theme
-        setTheme(R.style.AppThemeComerciante)
+        activity?.setTheme(R.style.AppThemeComerciante)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_comerciante)
-
-        setViews()
-
-        authGoogle()
-
-        setListeners()
     }
 
     override fun onDestroy() {
@@ -79,8 +71,22 @@ class ComercianteActivity : AppCompatActivity() {
 
         // Cierro la sesion de usuario actual
         AuthUI.getInstance()
-            .signOut(this)
+            .signOut(activity!!.applicationContext)
             .addOnCompleteListener { }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_comerciante, container, false)
+
+        setViews(view)
+
+        authGoogle()
+
+        setListeners(view)
+
+        return view
     }
 
     private fun authGoogle() {
@@ -100,40 +106,40 @@ class ComercianteActivity : AppCompatActivity() {
         )
     }
 
-    private fun setViews() {
+    private fun setViews(view: View) {
 
         // Toolbar
-        toolbar = findViewById(R.id.toolbarComerciante)
+        toolbar = view.findViewById(R.id.toolbarComerciante)
 
         // Progress Bar
-        llProgressBar = findViewById(R.id.llProgrssBar)
+        llProgressBar = view.findViewById(R.id.llProgrssBar)
 
         // Buttons
-        btnGuardar = findViewById(R.id.btn_guardar)
-        btnCargarFoto = findViewById(R.id.btn_cargar_foto)
+        btnGuardar = view.findViewById(R.id.btn_guardar)
+        btnCargarFoto = view.findViewById(R.id.btn_cargar_foto)
 
         // RadioButtons
-        radioGroupCategoria = findViewById(R.id.radio_group_categoria)
-        radioGroupPersonal = findViewById(R.id.radio_group_personal)
+        radioGroupCategoria = view.findViewById(R.id.radio_group_categoria)
+        radioGroupPersonal = view.findViewById(R.id.radio_group_personal)
 
         // TextEdits
-        formularioCuit = findViewById(R.id.formulario_cuit)
-        formularioNombre = findViewById(R.id.formulario_nombre)
-        formularioHorario = findViewById(R.id.formulario_horarios)
-        formularioNumero = findViewById(R.id.formulario_numero)
-        formularioWhatsapp = findViewById(R.id.formulario_whatsapp)
-        formularioMail = findViewById(R.id.formulario_mail)
-        formularioDireccion = findViewById(R.id.formulario_direccion)
-        formularioDescripcion = findViewById(R.id.formulario_descripcion)
+        formularioCuit = view.findViewById(R.id.formulario_cuit)
+        formularioNombre = view.findViewById(R.id.formulario_nombre)
+        formularioHorario = view.findViewById(R.id.formulario_horarios)
+        formularioNumero = view.findViewById(R.id.formulario_numero)
+        formularioWhatsapp = view.findViewById(R.id.formulario_whatsapp)
+        formularioMail = view.findViewById(R.id.formulario_mail)
+        formularioDireccion = view.findViewById(R.id.formulario_direccion)
+        formularioDescripcion = view.findViewById(R.id.formulario_descripcion)
 
         // Foto
-        imageView = findViewById(R.id.foto_comerciante)
+        imageView = view.findViewById(R.id.foto_comerciante)
     }
 
-    private fun setListeners() {
+    private fun setListeners(view: View) {
 
         // Toolbar
-        toolbar.setNavigationOnClickListener { this.finish() }
+        toolbar.setNavigationOnClickListener { activity?.finish() }
 
         // Foto
         btnCargarFoto.setOnClickListener {
@@ -149,19 +155,19 @@ class ComercianteActivity : AppCompatActivity() {
                 validarFormulario()
             }
             catch (e: Exception) {
-                Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
                 llProgressBar.visibility = View.GONE
             }
         }
 
         // Radio Groups Categoria
         radioGroupCategoria.setOnCheckedChangeListener { _, checkedId ->
-            radioButtonCategoria = findViewById(checkedId)
+            radioButtonCategoria = view.findViewById(checkedId)
         }
 
         // Radio Groups Personal
         radioGroupPersonal.setOnCheckedChangeListener { _, checkedId ->
-            radioButtonPersonal = findViewById(checkedId)
+            radioButtonPersonal = view.findViewById(checkedId)
         }
     }
 
@@ -179,7 +185,7 @@ class ComercianteActivity : AppCompatActivity() {
             formularioWhatsapp.text.isNullOrBlank() ||
             formularioDescripcion.text.isNullOrBlank()
         ) {
-            Toast.makeText(applicationContext,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
         }
         else {
             // Si todos los campos estan llenos, subo la foto
@@ -233,7 +239,7 @@ class ComercianteActivity : AppCompatActivity() {
                 guardarFormulario()
             } else {
                 // Handle failures
-                Toast.makeText(applicationContext, "No se pudo subir la imagen", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "No se pudo subir la imagen", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -245,20 +251,20 @@ class ComercianteActivity : AppCompatActivity() {
 
         // Creo el objeto negocio
         val negocio = Negocio(formularioNombre.text.toString(),
-                                formularioHorario.text.toString(),
-                                formularioWhatsapp.text.toString(),
-                                formularioNumero.text.toString(),
-                                formularioDescripcion.text.toString(),
-                                "${formularioDireccion.text.toString()}, Concepción del Uruguay, Entre Ríos",
-                                imagenURL,
-                                radioButtonCategoria?.text.toString().toLowerCase(),
-                                formularioCuit.text.toString(),
-                                radioButtonPersonal?.text.toString().toLowerCase(),
-                                usuario.uid,
-                                usuario.displayName.toString(),
-                                usuario.email.toString(),
-                                usuario.phoneNumber.toString(),
-                                false
+            formularioHorario.text.toString(),
+            formularioWhatsapp.text.toString(),
+            formularioNumero.text.toString(),
+            formularioDescripcion.text.toString(),
+            "${formularioDireccion.text.toString()}, Concepción del Uruguay, Entre Ríos",
+            imagenURL,
+            radioButtonCategoria?.text.toString().toLowerCase(),
+            formularioCuit.text.toString(),
+            radioButtonPersonal?.text.toString().toLowerCase(),
+            usuario.uid,
+            usuario.displayName.toString(),
+            usuario.email.toString(),
+            usuario.phoneNumber.toString(),
+            false
         )
 
         db.collection("negocios")
@@ -268,21 +274,20 @@ class ComercianteActivity : AppCompatActivity() {
                 // Se subio la coleccion, detengo el progress bar
                 llProgressBar.visibility = View.GONE
 
-                Toast.makeText(applicationContext, "Sus datos se guardaron con éxito", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Sus datos se guardaron con éxito", Toast.LENGTH_LONG).show()
 
                 // Cierro la sesion de usuario actual
                 AuthUI.getInstance()
-                    .signOut(this)
+                    .signOut(activity!!.applicationContext)
                     .addOnCompleteListener {
-                        this.finish()
+                        activity!!.finish()
                     }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
             }
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -311,11 +316,16 @@ class ComercianteActivity : AppCompatActivity() {
                 // Sign in failed.
                 // Cierro la sesion de usuario actual
                 AuthUI.getInstance()
-                    .signOut(this)
+                    .signOut(activity!!.applicationContext)
                     .addOnCompleteListener {
-                        this.finish()
+                        activity!!.finish()
                     }
             }
         }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = ComercianteFragment()
     }
 }

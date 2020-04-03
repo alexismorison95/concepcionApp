@@ -4,12 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.morris.concepcionapp.ui.main.ComercianteActivity
+import com.morris.concepcionapp.ui.main.GeneralActivity
 import com.morris.concepcionapp.ui.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,13 +37,22 @@ class MainActivity : AppCompatActivity() {
 
             R.id.button_comerciante -> {
 
-                val intent = Intent(this, ComercianteActivity::class.java)
+                //val intent = Intent(this, ComercianteActivity::class.java)
+
+                val intent = Intent(this, GeneralActivity::class.java)
+                intent.putExtra("FrangmentName", "ComercianteFragment")
+
                 startActivity(intent)
 
                 true
             }
             else -> {
-                // Intent info
+
+                val intent = Intent(this, GeneralActivity::class.java)
+                intent.putExtra("FrangmentName", "InfoFragment")
+
+                startActivity(intent)
+
                 true
             }
         }
