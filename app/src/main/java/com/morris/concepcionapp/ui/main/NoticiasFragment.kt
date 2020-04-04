@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.ContactsContract.CommonDataKinds.Website.URL
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.get
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.api.Http
 
@@ -38,7 +40,7 @@ import java.util.logging.SimpleFormatter
 class NoticiasFragment : Fragment() {
 
     private lateinit var webView: WebView
-    private lateinit var progressBar: ProgressBar
+    //private lateinit var progressBar: ProgressBar
 
     private lateinit var btnReload: Button
     private lateinit var btnBack: Button
@@ -67,32 +69,18 @@ class NoticiasFragment : Fragment() {
         btnBack = view.findViewById(R.id.btnBack)
         btnForward = view.findViewById(R.id.btnForward)
 
-        webView = view.findViewById(R.id.noticias_webView)
+        //progressBar = view.findViewById(R.id.progressBar)
 
-        progressBar = view.findViewById(R.id.progressBar)
+        webView = view.findViewById(R.id.noticias_webView)
     }
 
     private fun setListeners() {
 
-        btnReload.setOnClickListener { webView.reload() }
+        btnForward.setOnClickListener { if (webView.canGoForward()) { webView.goForward() } }
 
-        btnBack.setOnClickListener {
+        btnBack.setOnClickListener { if (webView.canGoBack()) { webView.goBack() } }
 
-            if (webView.canGoBack()) {
-
-                webView.goBack()
-                progressBar.visibility = View.GONE
-            }
-        }
-
-        btnForward.setOnClickListener {
-
-            if (webView.canGoForward()) {
-                
-                webView.goForward()
-                progressBar.visibility = View.GONE
-            }
-        }
+        btnReload.setOnClickListener { webView.loadUrl(urlGoogle) }
     }
 
     private fun loadWebDefault() {
@@ -100,8 +88,6 @@ class NoticiasFragment : Fragment() {
         webView.webViewClient = MyWebClient()
         webView.webChromeClient = MyChromeClient()
         webView.settings.javaScriptEnabled = true
-//        webView.settings.builtInZoomControls = true
-//        webView.settings.displayZoomControls = false
 
         urlGoogle = "https://news.google.com/topstories?hl=es-419&gl=AR&ceid=AR:es-419"
 
@@ -113,7 +99,7 @@ class NoticiasFragment : Fragment() {
 
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
 
-            progressBar.visibility = View.VISIBLE
+            //progressBar.visibility = View.VISIBLE
 
             return true
         }
@@ -121,7 +107,7 @@ class NoticiasFragment : Fragment() {
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
 
-            progressBar.visibility = View.GONE
+            //progressBar.visibility = View.GONE
         }
 
         override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {

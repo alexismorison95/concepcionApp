@@ -35,7 +35,7 @@ class RemiseriasFragment : Fragment() {
 
         // Toolbar
         toolbar = view.findViewById(R.id.toolbar)
-        toolbar.title = "Emergencias"
+        toolbar.title = "Remiserias"
     }
 
     private fun setListenners() {

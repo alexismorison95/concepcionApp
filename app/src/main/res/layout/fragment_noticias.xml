@@ -4,64 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.NoticiasFragment">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <WebView
+            android:id="@+id/noticias_webView"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/colorText">
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="6dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="-8dp"
+            android:layout_marginEnd="-8dp">
 
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_arrow_back_black_24dp"
-                android:background="?android:selectableItemBackground"
-                android:paddingStart="8dp"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp">
 
-            <Button
-                android:id="@+id/btnForward"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
-                android:background="?android:selectableItemBackground"
-                android:paddingStart="8dp"/>
+                <Button
+                    android:id="@+id/btnBack"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingStart="12dp" />
 
-            <Button
-                android:id="@+id/btnReload"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_refresh_black_24dp"
-                android:background="?android:selectableItemBackground"
-                android:paddingStart="8dp"/>
+                <Button
+                    android:id="@+id/btnForward"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingStart="12dp"/>
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btnReload"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_refresh_black_24dp"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingStart="12dp"/>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </LinearLayout>
 
-            <WebView
-                android:id="@+id/noticias_webView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:theme="@style/AppThemeInicio" />
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal|center_vertical"-->
+<!--            android:theme="@style/AppThemeInicio" />-->
 
-        </FrameLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

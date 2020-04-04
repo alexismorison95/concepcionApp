@@ -2,12 +2,14 @@ package com.morris.concepcionapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.morris.concepcionapp.ui.main.GeneralActivity
+import com.morris.concepcionapp.ui.main.NoticiasFragment
 import com.morris.concepcionapp.ui.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 

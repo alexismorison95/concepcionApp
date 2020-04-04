@@ -15,5 +15,4 @@
         android:title="Info. de la aplicación"
         app:showAsAction="never">
     </item>
-
 </menu>
