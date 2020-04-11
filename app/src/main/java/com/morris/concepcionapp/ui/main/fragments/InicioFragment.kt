@@ -1,7 +1,6 @@
-package com.morris.concepcionapp.ui.main
+package com.morris.concepcionapp.ui.main.fragments
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,15 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.marginBottom
 import com.google.android.material.textfield.TextInputEditText
 
 import com.morris.concepcionapp.R
-import kotlinx.android.synthetic.*
+import com.morris.concepcionapp.ui.main.BuscarActivity
+import com.morris.concepcionapp.ui.main.GeneralActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -146,6 +141,7 @@ class InicioFragment : Fragment(), View.OnClickListener {
 
     companion object {
         @JvmStatic
-        fun newInstance() = InicioFragment()
+        fun newInstance() =
+            InicioFragment()
     }
 }

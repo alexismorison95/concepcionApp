@@ -1,4 +1,4 @@
-package com.morris.concepcionapp.ui.main
+package com.morris.concepcionapp.ui.main.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.morris.concepcionapp.Funciones
-import com.morris.concepcionapp.Negocio
+import com.morris.concepcionapp.models.Negocio
 
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
@@ -250,7 +250,8 @@ class ComercianteFragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
 
         // Creo el objeto negocio
-        val negocio = Negocio(formularioNombre.text.toString(),
+        val negocio = Negocio(
+            formularioNombre.text.toString(),
             formularioHorario.text.toString(),
             formularioWhatsapp.text.toString(),
             formularioNumero.text.toString(),
@@ -326,6 +327,7 @@ class ComercianteFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = ComercianteFragment()
+        fun newInstance() =
+            ComercianteFragment()
     }
 }

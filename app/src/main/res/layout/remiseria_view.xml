@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/remiseria_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="asd"
+        android:drawableEnd="@drawable/ic_expand_more_black_24dp"
+        android:background="?android:selectableItemBackground"
+        android:paddingHorizontal="25dp"
+        android:textAlignment="viewStart"/>
+
+    <LinearLayout
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/layoutVG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/remiseria_tel_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teléfono:"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_marginEnd="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/remiseria_layout_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider8dp"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dirección:"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/remiseria_dir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.morris.concepcionapp
+package com.morris.concepcionapp.models
 
 data class Negocio(val nombre: String? = null,
                    val horario: String? = null,

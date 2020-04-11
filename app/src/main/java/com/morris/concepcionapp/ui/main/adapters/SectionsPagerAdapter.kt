@@ -1,11 +1,12 @@
-package com.morris.concepcionapp.ui.main
+package com.morris.concepcionapp.ui.main.adapters
 
 import android.content.Context
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.morris.concepcionapp.R
+import com.morris.concepcionapp.ui.main.fragments.InicioFragment
+import com.morris.concepcionapp.ui.main.fragments.NoticiasFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_2,
@@ -24,8 +25,12 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager): F
         // Return a PlaceholderFragment (defined as a static inner class below).
         return when (position) {
 
-            0 -> { NoticiasFragment() }
-            else -> { InicioFragment.newInstance() }
+            0 -> {
+                NoticiasFragment()
+            }
+            else -> {
+                InicioFragment.newInstance()
+            }
         }
     }
 

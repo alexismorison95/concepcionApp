@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import com.morris.concepcionapp.R
+import com.morris.concepcionapp.ui.main.fragments.ComercianteFragment
+import com.morris.concepcionapp.ui.main.fragments.EmergenciasFragment
+import com.morris.concepcionapp.ui.main.fragments.InfoFragment
+import com.morris.concepcionapp.ui.main.fragments.RemiseriasFragment
 
 class GeneralActivity : AppCompatActivity() {
 

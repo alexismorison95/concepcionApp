@@ -2,20 +2,17 @@ package com.morris.concepcionapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.morris.concepcionapp.Funciones
-import com.morris.concepcionapp.Negocio
+import com.morris.concepcionapp.models.Negocio
 import com.morris.concepcionapp.R
+import com.morris.concepcionapp.ui.main.adapters.NegocioAdapter
 import kotlinx.android.synthetic.main.activity_buscar.*
-import java.nio.channels.Selector
-import java.text.Normalizer
 
 
 class BuscarActivity : AppCompatActivity() {
@@ -76,6 +73,7 @@ class BuscarActivity : AppCompatActivity() {
 
             // Cargo las vistas en el recyclerView
             recycle_list_view.apply {
+
                 layoutManager = LinearLayoutManager(this.context)
                 adapter = NegocioAdapter(negocios)
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.InicioFragment">
+    tools:context=".ui.main.fragments.InicioFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/altoBotonesInicio"
                         android:background="?android:selectableItemBackground"
-                        android:text="Remiseria"
+                        android:text="Remiserias"
                         android:textSize="@dimen/textBotonesInicio"
                         android:fontFamily="sans-serif"
                         android:textColor="@color/colorTextPrimary"

@@ -1,12 +1,10 @@
-package com.morris.concepcionapp.ui.main
+package com.morris.concepcionapp.ui.main.fragments
 
-import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 
 import com.morris.concepcionapp.R
 
@@ -29,6 +27,7 @@ class InfoFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = InfoFragment()
+        fun newInstance() =
+            InfoFragment()
     }
 }

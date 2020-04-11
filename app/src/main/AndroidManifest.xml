@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.main.GeneralActivity"></activity>
-        <activity android:name=".ui.main.ComercianteActivity" />
         <activity android:name=".ui.main.BuscarActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

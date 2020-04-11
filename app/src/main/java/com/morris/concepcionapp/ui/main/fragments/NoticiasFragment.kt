@@ -1,36 +1,16 @@
-package com.morris.concepcionapp.ui.main
+package com.morris.concepcionapp.ui.main.fragments
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
 import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.core.view.get
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.api.Http
 
 import com.morris.concepcionapp.R
-import java.lang.Exception
-import java.net.HttpURLConnection
-import java.nio.file.DirectoryStream
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
-import java.util.logging.SimpleFormatter
 
 /**
  * A simple [Fragment] subclass.
@@ -134,6 +114,7 @@ class NoticiasFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = NoticiasFragment()
+        fun newInstance() =
+            NoticiasFragment()
     }
 }

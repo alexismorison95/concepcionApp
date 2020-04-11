@@ -1,12 +1,7 @@
-package com.morris.concepcionapp.ui.main
+package com.morris.concepcionapp.ui.main.adapters
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.Image
 import android.net.Uri
-import android.os.Build
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +9,13 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.morris.concepcionapp.Funciones
-import com.morris.concepcionapp.Negocio
+import com.morris.concepcionapp.models.Negocio
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
 import kotlin.Exception
-import com.squareup.picasso.Callback as callback
 
 class NegocioAdapter(private val list: MutableList<Negocio>): RecyclerView.Adapter<NegocioViewHolder>() {
 
@@ -30,7 +23,10 @@ class NegocioAdapter(private val list: MutableList<Negocio>): RecyclerView.Adapt
 
         val inflater = LayoutInflater.from(parent.context)
 
-        return NegocioViewHolder(inflater, parent)
+        return NegocioViewHolder(
+            inflater,
+            parent
+        )
     }
 
     override fun getItemCount(): Int {
