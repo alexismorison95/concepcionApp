@@ -24,7 +24,7 @@ class RemiseriasFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // Theme
-        activity?.setTheme(R.style.AppThemeRemiseria)
+        //activity?.setTheme(R.style.AppThemeRemiseria)
 
         super.onCreate(savedInstanceState)
     }
@@ -67,14 +67,26 @@ class RemiseriasFragment : Fragment() {
     private fun loadRemiserias(): List<Remiseria> {
 
         return listOf(
-            Remiseria("Servi-mas remises y fletes", "Belgrano 465",
+            Remiseria("Servi-mas Remises y Fletes", "Belgrano 465",
             "03442427777,03442427984,03442429170,03442433029"),
 
             Remiseria("Remises Acción", "Belgrano 674",
             "03442428888,03442422090,03442641200"),
 
             Remiseria("Remises Tao", "Bv. Montoneras 143",
-            "03442432542")
+            "03442432542"),
+
+            Remiseria("Remises Concepción", "J.J Millán 634",
+            "03442431212,03442431515"),
+
+            Remiseria("Remises Correcaminos", "Rocamora 1256",
+                "03442433233,03442431387"),
+
+            Remiseria("Radio Taxi", "Galarza 1282",
+                "03442422020,03442422727,03442427010"),
+
+            Remiseria("Remis Rio", "Bv. Díaz Vélez 870",
+                "03442443201,03442443344")
         )
     }
 

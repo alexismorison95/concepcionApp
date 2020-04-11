@@ -14,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycle_list_view"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:padding="10dp"
+        android:clipToPadding="false">
 
     </androidx.recyclerview.widget.RecyclerView>
 

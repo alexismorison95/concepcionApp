@@ -11,13 +11,16 @@
         android:layout_height="70dp"
         android:text="asd"
         android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-        android:background="?android:selectableItemBackground"
+        android:background="@color/colorTransparent"
         android:paddingHorizontal="25dp"
-        android:textAlignment="viewStart"/>
+        android:textAlignment="viewStart"
+        android:fontFamily="sans-serif"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textBotonesInicio"/>
 
     <LinearLayout
         android:layout_marginHorizontal="25dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="28dp"
         android:id="@+id/layoutVG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,7 +77,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/colorDivider" />
 
 </LinearLayout>

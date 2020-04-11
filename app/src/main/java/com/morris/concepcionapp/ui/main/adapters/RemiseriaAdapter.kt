@@ -113,6 +113,9 @@ class RemiseriaViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
 
         val telefonos = remiseria.telefonos!!.split(',')
 
+        // Vacio el linear layout para volver a cargar los telefonos
+        layoutTel.removeAllViews()
+
         for (telefono in telefonos) {
 
             val tel = TextView(itemView.context)
