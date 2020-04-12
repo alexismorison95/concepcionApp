@@ -11,6 +11,12 @@
     </item>
 
     <item
+        android:id="@+id/button_reportar_error"
+        android:title="Reportar un error"
+        app:showAsAction="never">
+    </item>
+
+    <item
         android:id="@+id/button_info"
         android:title="Info. de la aplicación"
         app:showAsAction="never">

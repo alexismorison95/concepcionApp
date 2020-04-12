@@ -60,9 +60,6 @@ class ComercianteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // Theme
-        activity?.setTheme(R.style.AppThemeComerciante)
-
         super.onCreate(savedInstanceState)
     }
 

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.fragments.InfoFragment"
-    android:id="@+id/infoFragment">
+    android:id="@+id/infoFragment"
+    android:background="@drawable/gradiente">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,15 +18,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@color/colorText"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:shadowColor="@color/colorShadow"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="8"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_logo2"
+            android:src="@mipmap/ic_cdelu_foreground"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"/>
 
@@ -33,31 +38,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Desarrollado por"
-            android:textColor="@color/colorTextSecondary"
+            android:textColor="@color/colorButtonInicioSelect"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="alexismorison83@gmail.com"
-            android:textColor="@color/colorPrimary"
+            android:text="Alexis Morisón - La Mona"
+            android:textColor="@color/colorText"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cafelaberinto@gmail.com"
-            android:textColor="@color/colorPrimary"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Seccion noticias"
-            android:textColor="@color/colorTextSecondary"
+            android:text="Contacto"
+            android:textColor="@color/colorButtonInicioSelect"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="20dp"/>
@@ -65,10 +62,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Google News"
-            android:textColor="@color/colorPrimary"
+            android:text="alexismorison83@gmail.com"
+            android:autoLink="email"
+            android:textColor="@color/colorText"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cafelaberinto@gmail.com"
+            android:autoLink="email"
+            android:textColor="@color/colorText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Versión 1.0 Beta"
+            android:textColor="@color/colorButtonInicioSelect"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"/>
 
     </LinearLayout>
 

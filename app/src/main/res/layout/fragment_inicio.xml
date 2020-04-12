@@ -37,6 +37,11 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorDivider"/>
+
             <LinearLayout
                 android:id="@+id/listaCategoriasLayout"
                 android:layout_width="match_parent"
@@ -66,6 +71,13 @@
                         android:src="@drawable/ic_add_alert_black_24dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_chevron_right_black_24dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="25dp"/>
 
                 </FrameLayout>
 
@@ -99,6 +111,13 @@
                         android:src="@drawable/ic_taxi2"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_chevron_right_black_24dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="25dp"/>
 
                 </FrameLayout>
 
@@ -163,6 +182,13 @@
                         android:src="@drawable/ic_sausage"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="25dp"/>
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/ic_chevron_right_black_24dp"-->
+<!--                        android:layout_gravity="center_vertical|end"-->
+<!--                        android:layout_marginEnd="25dp"/>-->
 
                 </FrameLayout>
 

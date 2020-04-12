@@ -46,6 +46,15 @@ class MainActivity : AppCompatActivity() {
 
                 true
             }
+            R.id.button_reportar_error -> {
+
+                val intent = Intent(this, GeneralActivity::class.java)
+                intent.putExtra("FrangmentName", "ReporteErrorFragment")
+
+                startActivity(intent)
+
+                true
+            }
             else -> {
 
                 val intent = Intent(this, GeneralActivity::class.java)

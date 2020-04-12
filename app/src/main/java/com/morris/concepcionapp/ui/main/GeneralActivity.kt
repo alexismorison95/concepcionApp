@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import com.morris.concepcionapp.R
-import com.morris.concepcionapp.ui.main.fragments.ComercianteFragment
-import com.morris.concepcionapp.ui.main.fragments.EmergenciasFragment
-import com.morris.concepcionapp.ui.main.fragments.InfoFragment
-import com.morris.concepcionapp.ui.main.fragments.RemiseriasFragment
+import com.morris.concepcionapp.ui.main.fragments.*
 
 class GeneralActivity : AppCompatActivity() {
 
@@ -56,6 +53,13 @@ class GeneralActivity : AppCompatActivity() {
             "RemiseriasFragment" -> {
 
                 val fragment = RemiseriasFragment.newInstance()
+
+                fragmentTransaction.add(R.id.contenedor, fragment)
+                fragmentTransaction.commit()
+            }
+            "ReporteErrorFragment" -> {
+
+                val fragment = ReporteErrorFragment.newInstance()
 
                 fragmentTransaction.add(R.id.contenedor, fragment)
                 fragmentTransaction.commit()

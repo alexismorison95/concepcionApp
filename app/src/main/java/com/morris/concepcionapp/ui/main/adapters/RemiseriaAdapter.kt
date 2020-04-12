@@ -51,7 +51,7 @@ class RemiseriaViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private lateinit var layoutTel: LinearLayout
     private lateinit var direccion: TextView
     private lateinit var layoutVG: LinearLayout
-    private lateinit var telefonoTV: TextView
+    //private lateinit var telefonoTV: TextView
 
 
     private val view = inflater.inflate(R.layout.remiseria_view, parent, false)
@@ -69,7 +69,7 @@ class RemiseriaViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         layoutTel = itemView.findViewById(R.id.remiseria_layout_tel)
         direccion = itemView.findViewById(R.id.remiseria_dir)
         layoutVG = itemView.findViewById(R.id.layoutVG)
-        telefonoTV = itemView.findViewById(R.id.remiseria_tel_tv)
+        //telefonoTV = itemView.findViewById(R.id.remiseria_tel_tv)
     }
 
     private fun setListeners() {
@@ -137,10 +137,10 @@ class RemiseriaViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
                 }
             }
 
-            if (telefonos.size > 1) {
-
-                telefonoTV.text = "Teléfonos:"
-            }
+//            if (telefonos.size > 1) {
+//
+//                telefonoTV.text = "Teléfonos:"
+//            }
 
             layoutTel.addView(tel)
         }
