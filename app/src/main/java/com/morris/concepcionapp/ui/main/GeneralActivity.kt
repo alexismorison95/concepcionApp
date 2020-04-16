@@ -19,7 +19,11 @@ class GeneralActivity : AppCompatActivity() {
         // Get params
         paramFragment = intent.getStringExtra("FrangmentName")
 
-        loadFragment()
+        // Esto es para que mantenga el estado de los fragments al cambiar la orientacion de la pantalla
+        if (savedInstanceState == null) {
+
+            loadFragment()
+        }
     }
 
     private fun loadFragment() {

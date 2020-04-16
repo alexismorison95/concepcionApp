@@ -3,9 +3,6 @@ package com.morris.concepcionapp.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.morris.concepcionapp.Funciones
@@ -13,14 +10,10 @@ import com.morris.concepcionapp.models.Negocio
 import com.morris.concepcionapp.R
 import com.morris.concepcionapp.ui.main.adapters.NegocioAdapter
 import kotlinx.android.synthetic.main.activity_buscar.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 class BuscarActivity : AppCompatActivity() {
-
-    private lateinit var toolbar: Toolbar
-    private lateinit var buscarNotFound: LinearLayout
-    private lateinit var llProgressBar: LinearLayout
-    private lateinit var textView: TextView
 
     private var busqueda: String? = null
     private var tipoBusqueda: String? = null
@@ -34,42 +27,34 @@ class BuscarActivity : AppCompatActivity() {
         busqueda = intent.getStringExtra("busqueda")
         tipoBusqueda = intent.getStringExtra("tipo")
 
-        setViews()
+        // Toolbar title
+        toolbar.title = busqueda?.capitalize()
+
+        setListeners()
 
         getNegocios()
     }
 
-    private fun setViews() {
+    private fun setListeners() {
 
         // Toolbar
-        toolbar = findViewById(R.id.toolbar)
-        toolbar.title = busqueda?.capitalize()
         toolbar.setNavigationOnClickListener { this.finish() }
-
-        // LinearLayout Not Found
-        buscarNotFound = findViewById(R.id.buscar_not_found)
-
-        // Progress Bar
-        llProgressBar = findViewById(R.id.llProgrssBar)
-
-        // TextView
-        textView = findViewById(R.id.textViewNotFound)
     }
 
     private fun loadRecyclerViews(negocios: MutableList<Negocio>) {
 
-        llProgressBar.visibility = View.GONE
+        customProgressBar.visibility = View.GONE
 
         // Validacion lista
         if (negocios.isEmpty()) {
 
             recycle_list_view.visibility = View.GONE
-            buscarNotFound.visibility = View.VISIBLE
+            notFoundLinearLayout.visibility = View.VISIBLE
         }
         else {
 
             recycle_list_view.visibility = View.VISIBLE
-            buscarNotFound.visibility = View.GONE
+            notFoundLinearLayout.visibility = View.GONE
 
             // Cargo las vistas en el recyclerView
             recycle_list_view.apply {
@@ -83,7 +68,7 @@ class BuscarActivity : AppCompatActivity() {
     private fun getNegocios() {
 
         // Muestro el progress bar
-        llProgressBar.visibility = View.VISIBLE
+        customProgressBar.visibility = View.VISIBLE
 
         // Access a Cloud Firestore instance from your Activity
         val db = FirebaseFirestore.getInstance()
@@ -172,12 +157,12 @@ class BuscarActivity : AppCompatActivity() {
 
     private fun showError() {
 
-        llProgressBar.visibility = View.GONE
+        customProgressBar.visibility = View.GONE
 
-        textView.text = "Error del servidor"
+        textViewNotFound.text = "Error del servidor"
 
         recycle_list_view.visibility = View.GONE
-        buscarNotFound.visibility = View.VISIBLE
+        notFoundLinearLayout.visibility = View.VISIBLE
     }
 
 }

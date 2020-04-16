@@ -54,4 +54,8 @@
         <item name="colorControlNormal">@color/colorText</item>
     </style>
 
+    <style name="AppTheme.CharacterCounter" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
 </resources>

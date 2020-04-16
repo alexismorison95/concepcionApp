@@ -10,38 +10,77 @@
     <include
         layout="@layout/toolbar" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:padding="26dp">
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <EditText
-            android:id="@+id/editText"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:lines="6"
-            android:maxLines="8"
-            android:maxLength="100"
-            android:gravity="start|top"
-            android:hint="Describe el problema"
-            android:scrollbars="vertical"
-            android:inputType="textMultiLine"
-            android:theme="@style/AppThemeComerciante"
-            android:focusedByDefault="false" />
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="bottom"
-            android:text="Enviar"
-            android:layout_marginTop="50dp"
-            android:textColor="@color/colorText"
-            android:layout_marginBottom="26dp"
-            android:textSize="20sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:counterOverflowTextAppearance="@style/AppTheme.CharacterCounter"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="30dp"
+                    android:theme="@style/AppThemeComerciante">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reporte_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Descripción del problema"
+                        android:lines="3"
+                        android:gravity="start"
+                        android:focusedByDefault="false"
+                        android:imeOptions="actionDone"
+                        android:scrollbars="vertical"
+                        android:inputType="textMultiLine"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorDivider"
+                    android:layout_marginTop="25dp"/>
+
+                <Button
+                    android:id="@+id/reporte_btn_enviar"
+                    android:layout_width="match_parent"
+                    android:background="?android:selectableItemBackground"
+                    android:layout_height="60dp"
+                    android:text="Enviar"
+                    android:textSize="20sp"
+                    android:theme="@style/AppTheme"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHighlight="@color/colorText"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/llProgrssBar"
+        android:visibility="gone"
+        layout="@layout/progress_bar_custom"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

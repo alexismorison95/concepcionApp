@@ -24,6 +24,8 @@ import com.morris.concepcionapp.models.Negocio
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ComercianteFragment : Fragment() {
@@ -59,6 +61,9 @@ class ComercianteFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Theme
+        activity?.setTheme(R.style.AppThemeComerciante)
 
         super.onCreate(savedInstanceState)
     }
@@ -241,10 +246,18 @@ class ComercianteFragment : Fragment() {
         }
     }
 
+    private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+
     private fun guardarFormulario() {
 
         // Access a Cloud Firestore instance from your Activity
         val db = FirebaseFirestore.getInstance()
+
+        val calendar = Calendar.getInstance()
+        val fechaHora = calendar.time.toString("dd-MM-yyyy - HH:mm")
 
         // Creo el objeto negocio
         val negocio = Negocio(
@@ -262,7 +275,8 @@ class ComercianteFragment : Fragment() {
             usuario.displayName.toString(),
             usuario.email.toString(),
             usuario.phoneNumber.toString(),
-            false
+            false,
+            fechaHora
         )
 
         db.collection("negocios")
@@ -324,7 +338,6 @@ class ComercianteFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            ComercianteFragment()
+        fun newInstance() = ComercianteFragment()
     }
 }

@@ -21,7 +21,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
-        android:id="@+id/buscar_not_found"
+        android:id="@+id/notFoundLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -44,7 +44,7 @@
     </LinearLayout>
 
     <include
-        android:id="@+id/llProgrssBar"
+        android:id="@+id/customProgressBar"
         android:visibility="gone"
         layout="@layout/progress_bar_custom"/>
 
