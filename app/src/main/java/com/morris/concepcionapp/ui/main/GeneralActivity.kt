@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import com.morris.concepcionapp.R
 import com.morris.concepcionapp.ui.main.fragments.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class GeneralActivity : AppCompatActivity() {
-
-    private lateinit var contenedor: FrameLayout
 
     private var paramFragment: String? = null
 

@@ -23,6 +23,8 @@ import com.morris.concepcionapp.models.Negocio
 
 import com.morris.concepcionapp.R
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_comerciante.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,7 +35,8 @@ class ComercianteFragment : Fragment() {
     private lateinit var toolbar: Toolbar
     private lateinit var imageView: ImageView
     private lateinit var llProgressBar: LinearLayout
-    private lateinit var imagenURL: String
+    private var imagenURL: String = "https://firebasestorage.googleapis.com/v0/b/concepcionapp-803a6.appspot.com/o/fondo.png?alt=media&token=a13cbdcb-e287-4853-b264-3dcb2b25fd29"
+    private var usaImagen: Boolean = false
 
     // Auth
     private lateinit var usuario: FirebaseUser
@@ -114,7 +117,7 @@ class ComercianteFragment : Fragment() {
         toolbar = view.findViewById(R.id.toolbar)
 
         // Progress Bar
-        llProgressBar = view.findViewById(R.id.llProgrssBar)
+        llProgressBar = view.findViewById(R.id.customProgressBar)
 
         // Buttons
         btnGuardar = view.findViewById(R.id.btn_guardar)
@@ -127,7 +130,7 @@ class ComercianteFragment : Fragment() {
         // TextEdits
         formularioCuit = view.findViewById(R.id.formulario_cuit)
         formularioNombre = view.findViewById(R.id.formulario_nombre)
-        formularioHorario = view.findViewById(R.id.formulario_horarios)
+        formularioHorario = view.findViewById(R.id.formulario_horario)
         formularioNumero = view.findViewById(R.id.formulario_numero)
         formularioWhatsapp = view.findViewById(R.id.formulario_whatsapp)
         formularioMail = view.findViewById(R.id.formulario_mail)
@@ -154,21 +157,25 @@ class ComercianteFragment : Fragment() {
         btnGuardar.setOnClickListener {
 
             try {
+
                 validarFormulario()
             }
             catch (e: Exception) {
+
                 Toast.makeText(context,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
-                llProgressBar.visibility = View.GONE
+                customProgressBar.visibility = View.GONE
             }
         }
 
         // Radio Groups Categoria
         radioGroupCategoria.setOnCheckedChangeListener { _, checkedId ->
+
             radioButtonCategoria = view.findViewById(checkedId)
         }
 
         // Radio Groups Personal
         radioGroupPersonal.setOnCheckedChangeListener { _, checkedId ->
+
             radioButtonPersonal = view.findViewById(checkedId)
         }
     }
@@ -187,18 +194,26 @@ class ComercianteFragment : Fragment() {
             formularioWhatsapp.text.isNullOrBlank() ||
             formularioDescripcion.text.isNullOrBlank()
         ) {
+
             Toast.makeText(context,"Debe completar todos los campos", Toast.LENGTH_LONG).show()
         }
         else {
-            // Si todos los campos estan llenos, subo la foto
-            subirFoto()
+
+            if (usaImagen) {
+
+                subirFoto()
+            }
+            else {
+
+                guardarFormulario()
+            }
         }
     }
 
     private fun subirFoto() {
 
         // Muestro el progress bar
-        llProgressBar.visibility = View.VISIBLE
+        customProgressBar.visibility = View.VISIBLE
 
         // Me conecto con firebase
         val storage = FirebaseStorage.getInstance("gs://concepcionapp-803a6.appspot.com")
@@ -230,16 +245,21 @@ class ComercianteFragment : Fragment() {
                     throw it
                 }
             }
+
             // Para obtener la url
             imagenRef.downloadUrl
+
         }.addOnCompleteListener { task ->
 
             if (task.isSuccessful) {
+
                 // La imagen se subio, obtengo la URL
                 imagenURL = task.result.toString()
 
                 guardarFormulario()
-            } else {
+            }
+            else {
+
                 // Handle failures
                 Toast.makeText(context, "No se pudo subir la imagen", Toast.LENGTH_LONG).show()
             }
@@ -247,7 +267,9 @@ class ComercianteFragment : Fragment() {
     }
 
     private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+
         val formatter = SimpleDateFormat(format, locale)
+
         return formatter.format(this)
     }
 
@@ -284,7 +306,7 @@ class ComercianteFragment : Fragment() {
             .addOnSuccessListener {
 
                 // Se subio la coleccion, detengo el progress bar
-                llProgressBar.visibility = View.GONE
+                customProgressBar.visibility = View.GONE
 
                 Toast.makeText(context, "Sus datos se guardaron con éxito", Toast.LENGTH_LONG).show()
 
@@ -296,6 +318,7 @@ class ComercianteFragment : Fragment() {
                     }
             }
             .addOnFailureListener { e ->
+
                 Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
             }
     }
@@ -309,6 +332,8 @@ class ComercianteFragment : Fragment() {
             Picasso.get().load(data?.data)
                 .error(R.drawable.ic_google_downasaur)
                 .into(imageView)
+
+            usaImagen = true
         }
 
         // Activity AUTH

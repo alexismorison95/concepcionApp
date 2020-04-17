@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -111,7 +112,7 @@ class ReporteErrorFragment : Fragment() {
         }
         else {
 
-            if (descripcionReporte.text!!.length < 19) {
+            if (descripcionReporte.text!!.length < 20) {
 
                 Toast.makeText(context, "Debe escribir una descripción más extensa", Toast.LENGTH_SHORT).show()
             }

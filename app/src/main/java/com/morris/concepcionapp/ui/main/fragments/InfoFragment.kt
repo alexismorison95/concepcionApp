@@ -16,6 +16,7 @@ import com.morris.concepcionapp.R
 class InfoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
     }
 

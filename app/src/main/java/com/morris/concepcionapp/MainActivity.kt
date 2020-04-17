@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
 import com.morris.concepcionapp.ui.main.GeneralActivity
 import com.morris.concepcionapp.ui.main.adapters.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Toolbar Config
         setSupportActionBar(toolbarInicio)
 
         configurarTabLayout()
@@ -78,7 +78,6 @@ class MainActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(R.id.viewpager_main)
         viewPager.adapter = sectionsPagerAdapter
 
-        val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
         viewPager.currentItem = 1

@@ -3,6 +3,7 @@ package com.morris.concepcionapp.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.morris.concepcionapp.Funciones
@@ -18,6 +19,9 @@ class BuscarActivity : AppCompatActivity() {
     private var busqueda: String? = null
     private var tipoBusqueda: String? = null
 
+    // Toolbar
+    private lateinit var toolbarB: Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,18 +31,24 @@ class BuscarActivity : AppCompatActivity() {
         busqueda = intent.getStringExtra("busqueda")
         tipoBusqueda = intent.getStringExtra("tipo")
 
-        // Toolbar title
-        toolbar.title = busqueda?.capitalize()
+        setViews()
 
         setListeners()
 
         getNegocios()
     }
 
+    private fun setViews() {
+
+        // Toolbar
+        toolbarB = findViewById(R.id.toolbar)
+        toolbarB.title = busqueda?.capitalize()
+    }
+
     private fun setListeners() {
 
         // Toolbar
-        toolbar.setNavigationOnClickListener { this.finish() }
+        toolbarB.setNavigationOnClickListener { this.finish() }
     }
 
     private fun loadRecyclerViews(negocios: MutableList<Negocio>) {
