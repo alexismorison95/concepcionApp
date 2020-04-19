@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/emergencia_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="asd"
+        android:drawableEnd="@drawable/ic_expand_more_black_24dp"
+        android:background="@color/colorTransparent"
+        android:paddingHorizontal="25dp"
+        android:textAlignment="viewStart"
+        android:fontFamily="sans-serif"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textBotonesInicio"/>
+
+    <LinearLayout
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="28dp"
+        android:id="@+id/layoutVG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_call_black_24dp"
+                android:layout_gravity="start"
+                android:layout_marginEnd="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/emergencia_layout_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider8dp"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorDivider"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="44dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_google_maps"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"/>
+
+            <TextView
+                android:id="@+id/emergencia_dir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider" />
+
+</LinearLayout>
